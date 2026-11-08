@@ -16,7 +16,7 @@ export function MidnightTemplate({ event, parts, labels }: TemplateProps) {
         )}
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="mx-auto w-full max-w-2xl px-5 pb-8">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">{labels.invited}</p>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wide ltr:tracking-[0.25em] text-accent">{labels.invited}</p>
           <h1 className="text-4xl leading-none font-black tracking-tight text-balance sm:text-6xl">{event.title}</h1>
         </div>
       </header>

@@ -1,14 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { templateIds, templates, type TemplateId, type TemplateMeta } from "@/templates/registry";
-
-const headingFonts: Record<TemplateMeta["headingFont"], string> = {
-  serif: "Georgia, 'Times New Roman', serif",
-  sans: "var(--font-sans)",
-  rounded: "'Trebuchet MS', 'Arial Rounded MT Bold', var(--font-sans)",
-  mono: "ui-monospace, 'SFMono-Regular', Menlo, monospace",
-};
+import { templateIds, templates, type TemplateId } from "@/templates/registry";
 
 type Props = {
   value: TemplateId;
@@ -48,7 +41,7 @@ export function TemplatePicker({ value, onChange }: Props) {
                 style={{ background: palette.background, color: palette.text }}
               >
                 <div className="h-2/5 w-full rounded-md" style={{ background: `linear-gradient(135deg, ${palette.accent}, ${palette.muted})`, opacity: 0.85 }} />
-                <div className="mt-1 text-sm font-bold leading-tight" style={{ fontFamily: headingFonts[headingFont] }}>
+                <div className="mt-1 text-base font-bold leading-tight" style={{ fontFamily: headingFont }}>
                   {t("sampleTitle")}
                 </div>
                 <div className="h-1 w-3/4 rounded-full" style={{ background: palette.muted, opacity: 0.5 }} />

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { logout } from "@/app/login/actions";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { requireStaff } from "@/lib/auth";
+import { templateFontVariables } from "@/templates/fonts";
 
 export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
   // Pages check again: a layout doesn't re-run on every navigation.
@@ -10,7 +11,8 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
   const t = await getTranslations();
 
   return (
-    <div className="flex flex-1 flex-col">
+    // Template fonts are defined here so the template picker can show them.
+    <div className={`${templateFontVariables} flex flex-1 flex-col`}>
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3">
           <Link href="/admin" className="text-lg font-bold">

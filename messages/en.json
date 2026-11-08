@@ -156,7 +156,8 @@
       "withEmail": "With email",
       "cancelled": "Cancelled",
       "capacity": "of {max} seats"
-    }
+    },
+    "preview": "Preview"
   },
   "invitation": {
     "invited": {
@@ -227,7 +228,8 @@
       "full_with_spots": "{count, plural, =0 {The event is fully booked.} one {Only one seat left.} other {Only # seats left.}}",
       "rate_limited": "Too many attempts. Try again in a few minutes.",
       "failed": "Something went wrong. Try again."
-    }
+    },
+    "previewNote": "Preview: this form doesn't submit."
   },
   "registrations": {
     "title": "Registrations",
@@ -378,5 +380,10 @@
       "dry_run": "Not sent (test mode)"
     },
     "sent": "Sent ✓"
+  },
+  "preview": {
+    "banner": "Preview",
+    "back": "Back to event",
+    "inactive": "The event is inactive; guests can't register."
   }
 }

@@ -31,6 +31,14 @@
   --color-on-accent: var(--on-accent);
   --font-sans: var(--font-heebo), system-ui, sans-serif;
   --font-serif: var(--font-frank-ruhl), Georgia, serif;
+  --font-romantic: var(--font-bellefair), Georgia, serif;
+  --font-rounded: var(--font-varela), var(--font-heebo), sans-serif;
+  --font-display: var(--font-secular), var(--font-heebo), sans-serif;
+  --font-deco: var(--font-suez), Georgia, serif;
+  --font-hand: var(--font-amatic), var(--font-heebo), sans-serif;
+  --font-tech: var(--font-rubik), var(--font-heebo), sans-serif;
+  --font-light: var(--font-assistant), var(--font-heebo), sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 body {

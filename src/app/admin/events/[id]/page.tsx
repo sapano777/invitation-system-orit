@@ -68,9 +68,14 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
           <h1 dir="auto" className="text-2xl font-bold">{event.title}</h1>
           {!event.is_active && <p className="mt-1 text-sm text-red-600">{t("eventPage.inactiveNotice")}</p>}
         </div>
-        <ButtonLink href={`/admin/events/${event.id}/edit`} variant="secondary">
-          {t("admin.edit")}
-        </ButtonLink>
+        <div className="flex gap-2">
+          <ButtonLink href={`/admin/events/${event.id}/preview`} variant="secondary">
+            {t("eventPage.preview")}
+          </ButtonLink>
+          <ButtonLink href={`/admin/events/${event.id}/edit`} variant="secondary">
+            {t("admin.edit")}
+          </ButtonLink>
+        </div>
       </div>
 
       <section className="rounded-2xl border border-border bg-surface p-5">

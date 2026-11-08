@@ -4,7 +4,7 @@ import type { TemplateProps } from "../types";
 export function ClassicTemplate({ event, parts, labels }: TemplateProps) {
   return (
     <article className="mx-auto flex w-full max-w-xl flex-col items-center gap-8 px-5 py-10 text-center sm:py-14">
-      <p className="font-serif text-sm uppercase tracking-[0.3em] text-muted">{labels.invited}</p>
+      <p className="font-serif text-sm uppercase tracking-wide ltr:tracking-[0.3em] text-muted">{labels.invited}</p>
 
       {parts.media && (
         <div className="w-full max-w-sm overflow-hidden rounded-t-full border-4 border-surface shadow-lg outline outline-1 outline-border">
