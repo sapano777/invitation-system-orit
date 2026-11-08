@@ -28,7 +28,17 @@ cp .env.example .env.local
 npm run dev
 ```
 
-האתר עולה ב-http://localhost:3000. האתר עולה גם בלי Supabase, אבל בלי גישה לנתונים.
+האתר עולה ב-http://localhost:3000.
+
+### Supabase מקומי (אופציונלי)
+
+אם Docker מותקן, אפשר להריץ Supabase מקומי במקום פרויקט בענן. המיגרציות מוחלות אוטומטית:
+
+```bash
+npx supabase start
+```
+
+הפקודה מדפיסה את ה-URL והמפתחות להעתקה ל-`.env.local`. יצירת עובד לבדיקות: Studio ב-http://127.0.0.1:54323, או דרך SQL כמו בסעיף "הוספת עובד".
 
 ## הקמת Supabase
 
@@ -36,6 +46,7 @@ npm run dev
 2. מריצים את הקבצים ב-`supabase/migrations/` לפי הסדר, ב-SQL Editor או עם `supabase db push`
 3. מעתיקים מ-Project Settings > API Keys את ה-URL, ה-publishable key וה-secret key ל-`.env.local`
 4. מומלץ: Authentication > Sign In / Providers, לכבות "Allow new users to sign up". עובדים מוסיפים ידנית.
+5. Authentication > URL Configuration: להגדיר את Site URL לכתובת האתר ב-Vercel.
 
 בדיקה שהכל מחובר: http://localhost:3000/api/health צריך להחזיר `"healthy": true`.
 
@@ -60,11 +71,16 @@ select public.add_staff('person@example.com', 'שם לתצוגה');
 
 ```
 src/app/              נתיבים (App Router)
-src/components/       קומפוננטות משותפות
+src/app/admin/        ממשק הניהול: רשימת אירועים, יצירה, עריכה
+src/app/login/        כניסת עובדים
+src/components/       קומפוננטות משותפות (טופס אירוע, העלאת מדיה, בחירת תבנית)
+src/lib/auth.ts       בדיקת הרשאת עובד (requireStaff)
+src/lib/events/       ולידציה, יצירת slug, קואורדינטות
+src/templates/        רשימת 10 תבניות ההזמנה
 src/i18n/             הגדרות שפה, קריאת השפה מעוגייה
 src/lib/supabase/     לקוחות Supabase: דפדפן, שרת, admin, proxy
 src/lib/types/        טיפוסי הדאטאבייס
-src/proxy.ts          רענון ה-session בכל בקשה
+src/proxy.ts          רענון ה-session והפניה ל-login ב-/admin
 messages/             תרגומים: he.json, en.json
 supabase/migrations/  סכמת הדאטאבייס
 docs/                 אפיון ותכנית עבודה

@@ -8,7 +8,139 @@
     "he": "עברית",
     "en": "English"
   },
-  "home": {
-    "status": "Stage 0: the foundation is ready. The admin area comes in stage 1."
+  "login": {
+    "title": "Staff sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "errors": {
+      "missing_fields": "Enter a valid email and your password.",
+      "invalid_credentials": "Wrong email or password.",
+      "unavailable": "Can't sign in right now. Try again in a moment."
+    }
+  },
+  "noAccess": {
+    "title": "No access",
+    "body": "You're signed in, but your user isn't set up as staff yet. Ask the administrator to add you.",
+    "logout": "Sign out"
+  },
+  "admin": {
+    "logout": "Sign out",
+    "events": "Events",
+    "newEvent": "New event",
+    "edit": "Edit",
+    "upcoming": "Upcoming events",
+    "past": "Past events",
+    "inactive": "Inactive",
+    "empty": "No events yet. Create the first one.",
+    "loadError": "Couldn't load events. Refresh the page."
+  },
+  "templates": {
+    "legend": "Design template",
+    "sampleTitle": "Event",
+    "sampleButton": "RSVP",
+    "names": {
+      "classic": "Classic",
+      "minimal": "Minimal",
+      "floral": "Floral",
+      "midnight": "Modern dark",
+      "gold": "Gold",
+      "kids": "Kids",
+      "corporate": "Clean business",
+      "tech": "Tech business",
+      "festive": "Festive",
+      "romantic": "Romantic"
+    }
+  },
+  "media": {
+    "choose": "Choose an image or GIF",
+    "hint": "JPG, PNG, WebP or GIF, up to 10MB",
+    "uploading": "Uploading...",
+    "replace": "Replace",
+    "remove": "Remove",
+    "previewAlt": "Invitation image",
+    "errors": {
+      "type": "Only JPG, PNG, WebP or GIF files.",
+      "size": "The file is larger than 10MB.",
+      "upload": "Upload failed. Try again."
+    }
+  },
+  "eventForm": {
+    "sections": {
+      "details": "Event details",
+      "location": "Location",
+      "design": "Design",
+      "more": "More settings"
+    },
+    "title": "Event name",
+    "event_type": "Event type",
+    "types": {
+      "private": "Private",
+      "business": "Business"
+    },
+    "date_time": "Date and time",
+    "timeZoneHint": "Israel time",
+    "description": "Description",
+    "venue_name": "Venue name",
+    "address": "Address",
+    "geocode": {
+      "button": "Find on map",
+      "searching": "Searching...",
+      "set": "Map location set",
+      "none": "No map location. Without it the invitation won't show Waze and Google Maps buttons.",
+      "check": "Check on Google Maps",
+      "clear": "Clear",
+      "manualLabel": "Or paste a map link or coordinates",
+      "manualHint": "A Google Maps or Waze link, or coordinates like 32.0755, 34.7755",
+      "not_found": "Address not found. Try rewording it, or paste a map link.",
+      "unavailable": "The map service is unavailable. You can paste a map link instead."
+    },
+    "media": "Invitation image or GIF",
+    "customColor": "Custom color",
+    "gift_link_url": "Gift or payment link",
+    "giftHint": "For example a Bit, PayBox or gift registry link",
+    "rsvp_deadline": "Registration deadline",
+    "max_guests": "Maximum guests",
+    "maxGuestsHint": "Empty = no limit",
+    "slug": "Link ending (optional)",
+    "slugHint": "Lowercase letters, digits and dashes. Left empty, one is generated. Can't be changed later.",
+    "is_active": "Event is active",
+    "isActiveHint": "An inactive event won't accept new registrations.",
+    "create": "Create event",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "errors": {
+      "required": "Required",
+      "too_long": "Too long",
+      "invalid_url": "Invalid link. It should start with https://",
+      "invalid_date": "Invalid date",
+      "invalid_coordinates": "Invalid map location",
+      "invalid_color": "Invalid color",
+      "invalid_number": "Enter a positive whole number",
+      "invalid_slug": "Lowercase letters, digits and dashes only, 3 to 64 characters",
+      "slug_taken": "Another event already uses this link ending",
+      "deadline_after_event": "The registration deadline must be before the event",
+      "save_failed": "Saving failed. Try again.",
+      "not_found": "Event not found. It may have been deleted.",
+      "fix_fields": "Fix the highlighted fields."
+    }
+  },
+  "eventPage": {
+    "publicLink": "Invitation link",
+    "publicLinkHint": "Share this link with guests (WhatsApp, SMS, etc.). The invitation page itself is built in stage 2.",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "copyFallback": "Copy the link:",
+    "openPublic": "Open invitation page",
+    "template": "Template",
+    "inactiveNotice": "This event is inactive and not accepting registrations.",
+    "registrationsSoon": "The guest list and totals are added in stage 3.",
+    "dangerZone": "Delete event",
+    "deleteHint": "Deleting is permanent and removes all registrations for the event.",
+    "delete": "Delete event",
+    "deleting": "Deleting...",
+    "deleteConfirm": "Delete \"{title}\" and all its registrations? This can't be undone."
   }
 }

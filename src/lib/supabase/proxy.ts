@@ -3,13 +3,17 @@ import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "@/lib/types/database";
 import { hasSupabaseEnv, supabasePublishableKey, supabaseUrl } from "@/lib/env";
 
-// Refreshes the Supabase session cookie on each request so Server Components
-// see a valid session. Route protection for /admin is added in stage 1.
+// Refreshes the Supabase session cookie on each request and sends signed-out
+// visitors of /admin to the login page. This is an optimistic check only: the
+// staff check against the database happens in requireStaff().
 export async function updateSession(request: NextRequest) {
-  let response = NextResponse.next({ request });
+  const isAdmin = request.nextUrl.pathname.startsWith("/admin");
 
-  // Let the app boot before Supabase is configured.
-  if (!hasSupabaseEnv()) return response;
+  if (!hasSupabaseEnv()) {
+    return isAdmin ? redirectToLogin(request) : NextResponse.next({ request });
+  }
+
+  let response = NextResponse.next({ request });
 
   const supabase = createServerClient<Database>(supabaseUrl(), supabasePublishableKey(), {
     cookies: {
@@ -26,7 +30,22 @@ export async function updateSession(request: NextRequest) {
 
   // Do not put code between createServerClient and getClaims(): it is what
   // refreshes an expired token.
-  await supabase.auth.getClaims();
+  const { data } = await supabase.auth.getClaims();
+
+  if (isAdmin && !data?.claims?.sub) {
+    const redirect = redirectToLogin(request);
+    // Keep any cookie changes (e.g. a cleared, expired session).
+    for (const cookie of response.cookies.getAll()) redirect.cookies.set(cookie);
+    return redirect;
+  }
 
   return response;
+}
+
+function redirectToLogin(request: NextRequest) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/login";
+  url.search = "";
+  url.searchParams.set("next", request.nextUrl.pathname + request.nextUrl.search);
+  return NextResponse.redirect(url);
 }
