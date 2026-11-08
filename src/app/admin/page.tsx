@@ -11,7 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("events") };
 }
 
-type ListEvent = Pick<EventRow, "id" | "title" | "date_time" | "venue_name" | "event_type" | "is_active">;
+type ListEvent = Pick<EventRow, "id" | "title" | "date_time" | "venue_name" | "event_type" | "is_active"> & {
+  registrations: Array<{ guest_count: number; status: string }>;
+};
 
 export default async function AdminHome() {
   await requireStaff();
@@ -19,7 +21,7 @@ export default async function AdminHome() {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("events")
-    .select("id, title, date_time, venue_name, event_type, is_active")
+    .select("id, title, date_time, venue_name, event_type, is_active, registrations(guest_count, status)")
     .order("date_time", { ascending: true });
 
   const events = data ?? [];
@@ -81,6 +83,11 @@ async function EventList({ title, events, muted }: { title: string; events: List
                 {format.dateTime(new Date(event.date_time), { dateStyle: "full", timeStyle: "short" })}
               </span>
               {event.venue_name && <span className="text-sm text-muted">{event.venue_name}</span>}
+              <span className="mt-1 text-sm font-medium text-accent">
+                {t("admin.guestsSummary", {
+                  guests: event.registrations.filter((r) => r.status === "confirmed").reduce((sum, r) => sum + r.guest_count, 0),
+                })}
+              </span>
             </Link>
           </li>
         ))}

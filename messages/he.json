@@ -34,7 +34,8 @@
     "past": "אירועים שעברו",
     "inactive": "לא פעיל",
     "empty": "עוד אין אירועים. צרו את הראשון.",
-    "loadError": "לא הצלחנו לטעון את האירועים. רעננו את הדף."
+    "loadError": "לא הצלחנו לטעון את האירועים. רעננו את הדף.",
+    "guestsSummary": "{guests, plural, =0 {אין עדיין נרשמים} one {מגיע אחד} other {# מגיעים}}"
   },
   "templates": {
     "legend": "תבנית עיצוב",
@@ -136,12 +137,19 @@
     "openPublic": "פתיחת דף ההזמנה",
     "template": "תבנית",
     "inactiveNotice": "האירוע לא פעיל ולא מקבל הרשמות.",
-    "registrationsSoon": "רשימת הנרשמים והסיכום המספרי יתווספו בשלב 3.",
     "dangerZone": "מחיקת האירוע",
     "deleteHint": "המחיקה סופית, כולל כל הנרשמים לאירוע.",
     "delete": "מחיקת האירוע",
     "deleting": "מוחקים...",
-    "deleteConfirm": "למחוק את \"{title}\" ואת כל הנרשמים אליו? אי אפשר לבטל."
+    "deleteConfirm": "למחוק את \"{title}\" ואת כל הנרשמים אליו? אי אפשר לבטל.",
+    "details": "פרטי האירוע",
+    "summary": {
+      "registrations": "הרשמות",
+      "guests": "סה\"כ מגיעים",
+      "withEmail": "עם אימייל",
+      "cancelled": "בוטלו",
+      "capacity": "מתוך {max} מקומות"
+    }
   },
   "invitation": {
     "invited": {
@@ -212,6 +220,100 @@
       "full_with_spots": "{count, plural, =0 {כל המקומות תפוסים.} one {נשאר מקום אחד בלבד.} other {נשארו # מקומות בלבד.}}",
       "rate_limited": "יותר מדי ניסיונות. נסו שוב בעוד כמה דקות.",
       "failed": "משהו השתבש. נסו שוב."
+    }
+  },
+  "registrations": {
+    "title": "נרשמים",
+    "add": "הוספת נרשם",
+    "export": "ייצוא ל-Excel",
+    "search": "חיפוש לפי שם, טלפון, אימייל או הערות",
+    "filters": {
+      "status": "סטטוס",
+      "confirmed": "מאושרים",
+      "cancelled": "בוטלו",
+      "all": "הכל",
+      "withEmail": "רק עם אימייל",
+      "withNotes": "רק עם הערות"
+    },
+    "showing": "{shown, plural, one {מוצג נרשם אחד} other {מוצגים # נרשמים}} מתוך {total}",
+    "empty": "עוד אין נרשמים. שתפו את הקישור או הוסיפו נרשם ידנית.",
+    "noMatches": "אין נרשמים שמתאימים לחיפוש.",
+    "columns": {
+      "name": "שם",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guests": "מגיעים",
+      "notes": "הערות",
+      "registeredAt": "נרשם",
+      "actions": "פעולות"
+    },
+    "status": {
+      "confirmed": "מאושר",
+      "cancelled": "בוטל"
+    },
+    "source": {
+      "self": "הרשמה עצמית",
+      "manual": "נוסף ידנית"
+    },
+    "guestCount": "{count, plural, one {מגיע אחד} other {# מגיעים}}",
+    "actions": {
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל",
+      "noEmail": "לא נמסר אימייל",
+      "edit": "עריכה",
+      "delete": "מחיקה",
+      "deleteConfirm": "למחוק את ההרשמה של {name}? אי אפשר לבטל."
+    },
+    "dialog": {
+      "addTitle": "הוספת נרשם",
+      "editTitle": "עריכת נרשם",
+      "full_name": "שם מלא",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guest_count": "מספר מגיעים",
+      "guest_names": "שמות המגיעים",
+      "guestNamesHint": "שם אחד בכל שורה",
+      "notes": "הערות",
+      "status": "סטטוס",
+      "capacityNote": "הוספה ידנית לא מוגבלת במספר המקומות של האירוע.",
+      "save": "שמירה",
+      "saving": "שומרים...",
+      "cancel": "ביטול"
+    },
+    "errors": {
+      "name_required": "שדה חובה",
+      "invalid_phone": "מספר טלפון לא תקין",
+      "invalid_email": "כתובת אימייל לא תקינה",
+      "invalid_guest_count": "מספר בין 1 ל-50",
+      "too_long": "הטקסט ארוך מדי",
+      "phone_exists": "כבר יש הרשמה עם הטלפון הזה לאירוע. ערכו אותה במקום להוסיף.",
+      "save_failed": "השמירה נכשלה. נסו שוב.",
+      "not_found": "ההרשמה לא נמצאה. ייתכן שנמחקה."
+    }
+  },
+  "reminders": {
+    "message": "שלום {name}, תזכורת לאירוע \"{title}\" ב{date} בשעה {time}{hasVenue, select, yes { ב{venue}} other {}}. כל הפרטים: {url}",
+    "emailSubject": "תזכורת: {title}"
+  },
+  "export": {
+    "sheetName": "נרשמים",
+    "summarySheet": "סיכום",
+    "columns": {
+      "full_name": "שם מלא",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guest_count": "מספר מגיעים",
+      "guest_names": "שמות המגיעים",
+      "notes": "הערות",
+      "status": "סטטוס",
+      "source": "מקור",
+      "created_at": "תאריך הרשמה",
+      "updated_at": "עודכן"
+    },
+    "summary": {
+      "event": "אירוע",
+      "date": "תאריך",
+      "exportedAt": "יוצא בתאריך"
     }
   }
 }

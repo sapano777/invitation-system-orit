@@ -71,10 +71,10 @@ select public.add_staff('person@example.com', 'שם לתצוגה');
 
 ```
 src/app/              נתיבים (App Router)
-src/app/admin/        ממשק הניהול: רשימת אירועים, יצירה, עריכה
+src/app/admin/        ממשק הניהול: אירועים, נרשמים, ייצוא ל-Excel
 src/app/login/        כניסת עובדים
 src/app/e/[slug]/     דף ההזמנה הציבורי, הרשמה, קובץ יומן
-src/components/       קומפוננטות משותפות (טופס אירוע, העלאת מדיה, בחירת תבנית)
+src/components/       קומפוננטות משותפות (טופס אירוע, העלאת מדיה, בחירת תבנית, ניהול נרשמים)
 src/lib/auth.ts       בדיקת הרשאת עובד (requireStaff)
 src/lib/events/       ולידציה, יצירת slug, קואורדינטות
 src/templates/        תבניות ההזמנה: רשימה, פריסות, ורכיבים משותפים (blocks/)

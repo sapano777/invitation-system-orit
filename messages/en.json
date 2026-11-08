@@ -34,7 +34,8 @@
     "past": "Past events",
     "inactive": "Inactive",
     "empty": "No events yet. Create the first one.",
-    "loadError": "Couldn't load events. Refresh the page."
+    "loadError": "Couldn't load events. Refresh the page.",
+    "guestsSummary": "{guests, plural, =0 {No guests yet} one {1 guest} other {# guests}}"
   },
   "templates": {
     "legend": "Design template",
@@ -136,12 +137,19 @@
     "openPublic": "Open invitation page",
     "template": "Template",
     "inactiveNotice": "This event is inactive and not accepting registrations.",
-    "registrationsSoon": "The guest list and totals are added in stage 3.",
     "dangerZone": "Delete event",
     "deleteHint": "Deleting is permanent and removes all registrations for the event.",
     "delete": "Delete event",
     "deleting": "Deleting...",
-    "deleteConfirm": "Delete \"{title}\" and all its registrations? This can't be undone."
+    "deleteConfirm": "Delete \"{title}\" and all its registrations? This can't be undone.",
+    "details": "Event details",
+    "summary": {
+      "registrations": "Registrations",
+      "guests": "Total guests",
+      "withEmail": "With email",
+      "cancelled": "Cancelled",
+      "capacity": "of {max} seats"
+    }
   },
   "invitation": {
     "invited": {
@@ -212,6 +220,100 @@
       "full_with_spots": "{count, plural, =0 {The event is fully booked.} one {Only one seat left.} other {Only # seats left.}}",
       "rate_limited": "Too many attempts. Try again in a few minutes.",
       "failed": "Something went wrong. Try again."
+    }
+  },
+  "registrations": {
+    "title": "Registrations",
+    "add": "Add registration",
+    "export": "Export to Excel",
+    "search": "Search by name, phone, email or notes",
+    "filters": {
+      "status": "Status",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "all": "All",
+      "withEmail": "With email only",
+      "withNotes": "With notes only"
+    },
+    "showing": "Showing {shown} of {total}",
+    "empty": "No registrations yet. Share the link or add one manually.",
+    "noMatches": "No registrations match your search.",
+    "columns": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "guests": "Guests",
+      "notes": "Notes",
+      "registeredAt": "Registered",
+      "actions": "Actions"
+    },
+    "status": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    },
+    "source": {
+      "self": "Self-registered",
+      "manual": "Added by staff"
+    },
+    "guestCount": "{count, plural, one {1 guest} other {# guests}}",
+    "actions": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "noEmail": "No email given",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Delete {name}'s registration? This can't be undone."
+    },
+    "dialog": {
+      "addTitle": "Add registration",
+      "editTitle": "Edit registration",
+      "full_name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "guest_count": "Number of guests",
+      "guest_names": "Guest names",
+      "guestNamesHint": "One name per line",
+      "notes": "Notes",
+      "status": "Status",
+      "capacityNote": "Staff additions aren't limited by the event's capacity.",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "name_required": "Required",
+      "invalid_phone": "Invalid phone number",
+      "invalid_email": "Invalid email address",
+      "invalid_guest_count": "A number from 1 to 50",
+      "too_long": "Too long",
+      "phone_exists": "There's already a registration with this phone. Edit it instead.",
+      "save_failed": "Saving failed. Try again.",
+      "not_found": "Registration not found. It may have been deleted."
+    }
+  },
+  "reminders": {
+    "message": "Hi {name}, a reminder about \"{title}\" on {date} at {time}{hasVenue, select, yes { at {venue}} other {}}. Details: {url}",
+    "emailSubject": "Reminder: {title}"
+  },
+  "export": {
+    "sheetName": "Registrations",
+    "summarySheet": "Summary",
+    "columns": {
+      "full_name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "guest_count": "Guests",
+      "guest_names": "Guest names",
+      "notes": "Notes",
+      "status": "Status",
+      "source": "Source",
+      "created_at": "Registered at",
+      "updated_at": "Updated at"
+    },
+    "summary": {
+      "event": "Event",
+      "date": "Date",
+      "exportedAt": "Exported at"
     }
   }
 }
