@@ -71,6 +71,8 @@ select public.add_staff('person@example.com', 'שם לתצוגה');
 
 ## פריסה ל-Vercel
 
+הפונקציות של השרת רצות בפרנקפורט (`regions: fra1` ב-`vercel.json`), ליד פרויקט ה-Supabase (`eu-central-1`). אם ה-Supabase באזור אחר, כדאי לעדכן בהתאם.
+
 1. מייבאים את הריפו ב-Vercel (New Project)
 2. מגדירים את משתני הסביבה מ-`.env.example` (Supabase, שירות האימייל, `CRON_SECRET`)
 3. אחרי הפריסה בודקים את `/api/health`
