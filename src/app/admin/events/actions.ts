@@ -75,11 +75,23 @@ export async function updateEvent(eventId: string, _prev: EventFormState, formDa
   if (!checkMediaUrl(input.media_url)) return { fieldErrors: { media_url: "invalid_url" } };
 
   const supabase = await createClient();
-  const { data: before } = await supabase.from("events").select("media_url").eq("id", eventId).maybeSingle();
+  const { data: before } = await supabase
+    .from("events")
+    .select("media_url, date_time, reminder_offset_hours, reminder_sent_at")
+    .eq("id", eventId)
+    .maybeSingle();
   if (!before) return { formError: "not_found" };
 
+  const columns = toEventColumns(input);
+  // A new date or reminder timing means a new reminder: let the cron job send
+  // it again at the new time.
+  const timingChanged =
+    new Date(before.date_time).getTime() !== new Date(columns.date_time).getTime() ||
+    before.reminder_offset_hours !== columns.reminder_offset_hours;
+  const reminderReset = timingChanged && before.reminder_sent_at ? { reminder_sent_at: null } : {};
+
   // The slug is fixed once created: the link may already be shared.
-  const { error } = await supabase.from("events").update(toEventColumns(input)).eq("id", eventId);
+  const { error } = await supabase.from("events").update({ ...columns, ...reminderReset }).eq("id", eventId);
   if (error) {
     console.error("updateEvent failed", error);
     return { formError: "save_failed" };

@@ -37,3 +37,15 @@ export function summarize(registrations: Array<{ status: string; guest_count: nu
     cancelled: registrations.length - confirmed.length,
   };
 }
+
+export async function getEmailLog(eventId: string, limit = 50) {
+  if (!UUID.test(eventId)) return [];
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("email_log")
+    .select("*")
+    .eq("event_id", eventId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return data ?? [];
+}

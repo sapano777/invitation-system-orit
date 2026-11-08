@@ -18,6 +18,13 @@ type Props = {
   cancelHref: string;
 };
 
+const REMINDER_PRESETS = [24, 48, 72, 168];
+
+// The presets, plus the event's current value if it's something else.
+function reminderChoices(current: number | null) {
+  return current && !REMINDER_PRESETS.includes(current) ? [...REMINDER_PRESETS, current].sort((a, b) => a - b) : REMINDER_PRESETS;
+}
+
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="rounded-2xl border border-border bg-surface p-5 sm:p-6">
@@ -163,6 +170,22 @@ export function EventForm({ event, action, cancelHref }: Props) {
             />
           </Field>
         </div>
+
+        <Field label={t("reminder")} htmlFor="reminder_offset_hours" hint={t("reminderHint")} error={err("reminder_offset_hours")}>
+          <select
+            id="reminder_offset_hours"
+            name="reminder_offset_hours"
+            defaultValue={event ? (event.reminder_offset_hours ?? "") : 24}
+            className={inputClass}
+          >
+            <option value="">{t("reminderOptions.none")}</option>
+            {reminderChoices(event?.reminder_offset_hours ?? null).map((hours) => (
+              <option key={hours} value={hours}>
+                {hours % 24 === 0 ? t("reminderOptions.days", { days: hours / 24 }) : t("reminderOptions.hours", { hours })}
+              </option>
+            ))}
+          </select>
+        </Field>
 
         {!event && (
           <Field label={t("slug")} htmlFor="slug" hint={t("slugHint")} error={err("slug")}>

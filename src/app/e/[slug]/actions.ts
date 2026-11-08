@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getLocale } from "next-intl/server";
 import { z } from "zod";
 import { hasSupabaseEnv } from "@/lib/env";
 import { rateLimit } from "@/lib/rate-limit";
@@ -55,6 +56,8 @@ export async function registerGuest(slug: string, _prev: RegistrationState, form
     p_guest_count: input.guest_count,
     p_guest_names: input.guest_names,
     p_notes: input.notes ?? null,
+    // The guest's page language, for their reminder email.
+    p_locale: await getLocale(),
   });
 
   if (error) {

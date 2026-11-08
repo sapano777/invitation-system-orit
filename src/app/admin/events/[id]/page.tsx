@@ -3,9 +3,12 @@ import { notFound } from "next/navigation";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { CopyLinkButton } from "@/components/CopyLinkButton";
 import { RegistrationsPanel } from "@/components/registrations/RegistrationsPanel";
+import { RemindersPanel } from "@/components/RemindersPanel";
 import { ButtonLink, buttonClass } from "@/components/ui/Button";
 import { requireStaff } from "@/lib/auth";
-import { getEvent, getRegistrations, summarize } from "@/lib/events/queries";
+import { emailProvider } from "@/lib/email/transport";
+import { getEmailLog, getEvent, getRegistrations, summarize } from "@/lib/events/queries";
+import { reminderDueAt, runIntervalHours } from "@/lib/reminder-schedule";
 import { getSiteUrl, publicEventPath } from "@/lib/site";
 import { isTemplateId } from "@/templates/registry";
 
@@ -14,18 +17,28 @@ export async function generateMetadata({ params }: PageProps<"/admin/events/[id]
   return { title: event?.title };
 }
 
+function reminderStatus(event: { date_time: string; reminder_offset_hours: number | null; reminder_sent_at: string | null }) {
+  if (event.reminder_sent_at) return { kind: "sent" as const, sentAt: event.reminder_sent_at };
+  if (new Date(event.date_time).getTime() < Date.now()) return { kind: "past" as const };
+  const dueAt = reminderDueAt(event);
+  if (!dueAt) return { kind: "off" as const };
+  return { kind: "scheduled" as const, dueAt: dueAt.toISOString(), daily: runIntervalHours() >= 24 };
+}
+
 export default async function EventPage({ params }: PageProps<"/admin/events/[id]">) {
   await requireStaff();
   const { id } = await params;
   const event = await getEvent(id);
   if (!event) notFound();
 
-  const [t, format, siteUrl, registrations] = await Promise.all([
+  const [t, format, siteUrl, registrations, emailLog] = await Promise.all([
     getTranslations(),
     getFormatter(),
     getSiteUrl(),
     getRegistrations(event.id),
+    getEmailLog(event.id),
   ]);
+  const provider = emailProvider();
   const publicUrl = `${siteUrl}${publicEventPath(event.slug)}`;
   const summary = summarize(registrations);
   const eventDate = new Date(event.date_time);
@@ -93,6 +106,7 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
 
       <RegistrationsPanel
         eventId={event.id}
+        emailEnabled={provider !== null}
         registrations={registrations}
         exportHref={`/admin/events/${event.id}/export`}
         reminder={{
@@ -102,6 +116,14 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
           venue: event.venue_name,
           url: publicUrl,
         }}
+      />
+
+      <RemindersPanel
+        eventId={event.id}
+        status={reminderStatus(event)}
+        recipients={summary.withEmail}
+        provider={provider}
+        log={emailLog}
       />
 
       <details className="rounded-2xl border border-border bg-surface">

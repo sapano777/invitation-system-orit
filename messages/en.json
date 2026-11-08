@@ -126,6 +126,13 @@
       "save_failed": "Saving failed. Try again.",
       "not_found": "Event not found. It may have been deleted.",
       "fix_fields": "Fix the highlighted fields."
+    },
+    "reminder": "Email reminder before the event",
+    "reminderHint": "Sent automatically to guests who left an email.",
+    "reminderOptions": {
+      "none": "No automatic reminder",
+      "days": "{days, plural, one {1 day before} =7 {1 week before} other {# days before}}",
+      "hours": "{hours} hours before"
     }
   },
   "eventPage": {
@@ -262,7 +269,9 @@
       "noEmail": "No email given",
       "edit": "Edit",
       "delete": "Delete",
-      "deleteConfirm": "Delete {name}'s registration? This can't be undone."
+      "deleteConfirm": "Delete {name}'s registration? This can't be undone.",
+      "sendEmail": "Send reminder",
+      "sendEmailTitle": "Email a reminder to {email}"
     },
     "dialog": {
       "addTitle": "Add registration",
@@ -315,5 +324,59 @@
       "date": "Date",
       "exportedAt": "Exported at"
     }
+  },
+  "email": {
+    "reminder": {
+      "subject": "Reminder: {title}, {date}",
+      "testPrefix": "[Test] ",
+      "greeting": "Hi {name},",
+      "intro": "This is a reminder about the event you registered for. See you there!",
+      "date": "Date",
+      "time": "Time",
+      "venue": "Venue",
+      "address": "Address",
+      "guests": "Registered for",
+      "guestCount": "{count, plural, one {1 person} other {# people}}",
+      "openInvitation": "Open the invitation",
+      "waze": "Waze",
+      "googleMaps": "Google Maps",
+      "calendar": "Add to calendar",
+      "update": "Need to change something? Register again on the invitation page with the same phone number and your registration will be updated.",
+      "testNotice": "This is a test. This is how the reminder looks to guests."
+    }
+  },
+  "reminderPanel": {
+    "title": "Email reminders",
+    "statusOff": "No automatic reminder for this event. You can set one when editing the event.",
+    "statusScheduled": "An automatic reminder goes out around {date}.",
+    "statusDailyNote": "The automatic check runs once a day in the morning and sends every reminder due in the next 24 hours.",
+    "statusSent": "The reminder was sent on {date}.",
+    "statusPast": "The event has already taken place.",
+    "recipients": "{count, plural, =0 {No guest has left an email yet.} one {1 guest left an email.} other {# guests left an email.}}",
+    "notConfigured": "Email sending isn't set up on the server. See the README, email reminders section.",
+    "dryRun": "Test mode: emails aren't really sent, only logged.",
+    "sendTest": "Send me a test email",
+    "sendAll": "Send reminder to everyone now",
+    "sendAllConfirm": "Send a reminder to {count} guests now? The automatic reminder won't be sent again.",
+    "sending": "Sending...",
+    "result": "{sent, plural, =0 {No emails sent} one {1 email sent} other {# emails sent}}{failed, plural, =0 {} other {, # failed}}.",
+    "errors": {
+      "not_configured": "Email sending isn't set up on the server.",
+      "no_email": "No email address.",
+      "failed": "Sending failed. See the send log."
+    },
+    "log": "Send log",
+    "logEmpty": "No emails sent for this event yet.",
+    "kind": {
+      "reminder_auto": "Automatic",
+      "reminder_manual": "Manual",
+      "test": "Test"
+    },
+    "status": {
+      "sent": "Sent",
+      "failed": "Failed",
+      "dry_run": "Not sent (test mode)"
+    },
+    "sent": "Sent ✓"
   }
 }

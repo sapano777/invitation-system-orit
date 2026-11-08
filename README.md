@@ -64,7 +64,7 @@ select public.add_staff('person@example.com', 'שם לתצוגה');
 ## פריסה ל-Vercel
 
 1. מייבאים את הריפו ב-Vercel (New Project)
-2. מגדירים את שלושת משתני הסביבה מ-`.env.example`
+2. מגדירים את משתני הסביבה מ-`.env.example` (Supabase, שירות האימייל, `CRON_SECRET`)
 3. אחרי הפריסה בודקים את `/api/health`
 
 ## מבנה הפרויקט
@@ -79,6 +79,8 @@ src/lib/auth.ts       בדיקת הרשאת עובד (requireStaff)
 src/lib/events/       ולידציה, יצירת slug, קואורדינטות
 src/templates/        תבניות ההזמנה: רשימה, פריסות, ורכיבים משותפים (blocks/)
 src/lib/phone.ts      נרמול מספרי טלפון לפורמט בינלאומי
+src/lib/email/        שליחת אימייל (Resend / SMTP) ותבנית מייל התזכורת
+src/lib/reminders.ts  לוגיקת התזכורות: מתי לשלוח, שליחה, יומן
 src/i18n/             הגדרות שפה, קריאת השפה מעוגייה
 src/lib/supabase/     לקוחות Supabase: דפדפן, שרת, admin, proxy
 src/lib/types/        טיפוסי הדאטאבייס

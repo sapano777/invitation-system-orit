@@ -44,6 +44,8 @@ export const eventFormSchema = z
     primary_color: optional(z.string().regex(/^#[0-9a-fA-F]{6}$/, { error: "invalid_color" })),
     gift_link_url: optional(httpUrl),
     rsvp_deadline: optional(localDateTime),
+    // Empty = no automatic reminder.
+    reminder_offset_hours: optional(z.coerce.number({ error: "invalid_number" }).int({ error: "invalid_number" }).min(1, { error: "invalid_number" }).max(24 * 60, { error: "invalid_number" })),
     max_guests: optional(z.coerce.number({ error: "invalid_number" }).int({ error: "invalid_number" }).min(1, { error: "invalid_number" }).max(100000, { error: "invalid_number" })),
     is_active: z.preprocess((v) => v === "on" || v === "true", z.boolean()),
     slug: optional(z.string().trim().toLowerCase().regex(SLUG_PATTERN, { error: "invalid_slug" })),
@@ -77,6 +79,7 @@ export function toEventColumns(input: EventFormInput) {
     gift_link_url: input.gift_link_url ?? null,
     rsvp_deadline: input.rsvp_deadline ? zonedInputToIso(input.rsvp_deadline) : null,
     max_guests: input.max_guests ?? null,
+    reminder_offset_hours: input.reminder_offset_hours ?? null,
     is_active: input.is_active,
   };
 }

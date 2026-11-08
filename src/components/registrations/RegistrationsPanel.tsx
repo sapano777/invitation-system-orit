@@ -3,6 +3,7 @@
 import { useCallback, useDeferredValue, useMemo, useState, useTransition } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { deleteRegistration } from "@/app/admin/events/[id]/registrations/actions";
+import { sendReminderNow, type ReminderActionResult } from "@/app/admin/events/[id]/reminders/actions";
 import { Button, buttonClass } from "@/components/ui/Button";
 import { inputClass } from "@/components/ui/Field";
 import { formatPhone } from "@/lib/phone";
@@ -24,6 +25,9 @@ type Props = {
   registrations: RegistrationRow[];
   reminder: ReminderContext;
   exportHref: string;
+  // When the server can send email, the email button sends the reminder
+  // directly; otherwise it opens the staff member's mail app.
+  emailEnabled: boolean;
 };
 
 type StatusFilter = "confirmed" | "cancelled" | "all";
@@ -36,7 +40,7 @@ function haystack(r: RegistrationRow) {
     .toLowerCase();
 }
 
-export function RegistrationsPanel({ eventId, registrations, reminder, exportHref }: Props) {
+export function RegistrationsPanel({ eventId, registrations, reminder, exportHref, emailEnabled }: Props) {
   const t = useTranslations("registrations");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
@@ -111,7 +115,14 @@ export function RegistrationsPanel({ eventId, registrations, reminder, exportHre
           ) : (
             <ul className="flex flex-col gap-2">
               {visible.map((r) => (
-                <RegistrationItem key={r.id} eventId={eventId} registration={r} reminder={reminder} onEdit={() => setDialog({ registration: r })} />
+                <RegistrationItem
+                  key={r.id}
+                  eventId={eventId}
+                  registration={r}
+                  reminder={reminder}
+                  emailEnabled={emailEnabled}
+                  onEdit={() => setDialog({ registration: r })}
+                />
               ))}
             </ul>
           )}
@@ -127,13 +138,16 @@ type ItemProps = {
   eventId: string;
   registration: RegistrationRow;
   reminder: ReminderContext;
+  emailEnabled: boolean;
   onEdit: () => void;
 };
 
-function RegistrationItem({ eventId, registration: r, reminder, onEdit }: ItemProps) {
+function RegistrationItem({ eventId, registration: r, reminder, emailEnabled, onEdit }: ItemProps) {
   const t = useTranslations();
   const format = useFormatter();
   const [deleting, startDelete] = useTransition();
+  const [sending, startSend] = useTransition();
+  const [sendResult, setSendResult] = useState<ReminderActionResult | null>(null);
   const names = guestNamesList(r.guest_names);
 
   const message = t("reminders.message", {
@@ -174,7 +188,21 @@ function RegistrationItem({ eventId, registration: r, reminder, onEdit }: ItemPr
           <a href={whatsappUrl(r.phone, message)} target="_blank" rel="noreferrer" className={`${actionClass} text-green-700 dark:text-green-400`}>
             {t("registrations.actions.whatsapp")}
           </a>
-          {r.email ? (
+          {r.email && emailEnabled && r.status === "confirmed" ? (
+            <button
+              type="button"
+              disabled={sending}
+              title={t("registrations.actions.sendEmailTitle", { email: r.email })}
+              onClick={() => startSend(async () => setSendResult(await sendReminderNow(eventId, r.id)))}
+              className={`${actionClass} disabled:opacity-50`}
+            >
+              {sending
+                ? t("reminderPanel.sending")
+                : sendResult?.ok
+                  ? t("reminderPanel.sent")
+                  : t("registrations.actions.sendEmail")}
+            </button>
+          ) : r.email ? (
             <a href={mailtoUrl(r.email, subject, message)} className={actionClass}>{t("registrations.actions.email")}</a>
           ) : (
             <span className={`${actionClass} cursor-not-allowed text-muted opacity-60`} title={t("registrations.actions.noEmail")}>
@@ -182,6 +210,9 @@ function RegistrationItem({ eventId, registration: r, reminder, onEdit }: ItemPr
             </span>
           )}
           <button type="button" onClick={onEdit} className={actionClass}>{t("registrations.actions.edit")}</button>
+          {sendResult && !sendResult.ok && (
+            <span role="alert" className="w-full text-xs text-red-600">{t(`reminderPanel.errors.${sendResult.error}`)}</span>
+          )}
           <button
             type="button"
             disabled={deleting}

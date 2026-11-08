@@ -6,6 +6,8 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type EventType = "private" | "business";
 export type RegistrationStatus = "confirmed" | "cancelled";
 export type RegistrationSource = "self" | "manual";
+export type EmailKind = "reminder_auto" | "reminder_manual" | "test";
+export type EmailStatus = "sent" | "failed" | "dry_run";
 
 export type Database = {
   __InternalSupabase: {
@@ -47,7 +49,7 @@ export type Database = {
           media_url: string | null;
           primary_color: string | null;
           gift_link_url: string | null;
-          reminder_offset_hours: number;
+          reminder_offset_hours: number | null;
           reminder_sent_at: string | null;
           rsvp_deadline: string | null;
           max_guests: number | null;
@@ -71,7 +73,7 @@ export type Database = {
           media_url?: string | null;
           primary_color?: string | null;
           gift_link_url?: string | null;
-          reminder_offset_hours?: number;
+          reminder_offset_hours?: number | null;
           reminder_sent_at?: string | null;
           rsvp_deadline?: string | null;
           max_guests?: number | null;
@@ -95,6 +97,7 @@ export type Database = {
           notes: string | null;
           status: RegistrationStatus;
           source: RegistrationSource;
+          locale: "he" | "en";
           created_at: string;
           updated_at: string;
         };
@@ -109,6 +112,7 @@ export type Database = {
           notes?: string | null;
           status?: RegistrationStatus;
           source?: RegistrationSource;
+          locale?: "he" | "en";
           created_at?: string;
           updated_at?: string;
         };
@@ -122,6 +126,34 @@ export type Database = {
             referencedColumns: ["id"];
           },
         ];
+      };
+      email_log: {
+        Row: {
+          id: string;
+          event_id: string | null;
+          registration_id: string | null;
+          kind: EmailKind;
+          to_email: string;
+          status: EmailStatus;
+          provider: string | null;
+          provider_id: string | null;
+          error: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          event_id?: string | null;
+          registration_id?: string | null;
+          kind: EmailKind;
+          to_email: string;
+          status: EmailStatus;
+          provider?: string | null;
+          provider_id?: string | null;
+          error?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["email_log"]["Insert"]>;
+        Relationships: [];
       };
     };
     Views: { [_ in never]: never };
@@ -165,6 +197,7 @@ export type Database = {
           p_guest_count: number;
           p_guest_names: Json;
           p_notes: string | null;
+          p_locale: string;
         };
         Returns: Json;
       };
@@ -176,3 +209,4 @@ export type Database = {
 
 export type EventRow = Database["public"]["Tables"]["events"]["Row"];
 export type RegistrationRow = Database["public"]["Tables"]["registrations"]["Row"];
+export type EmailLogRow = Database["public"]["Tables"]["email_log"]["Row"];
