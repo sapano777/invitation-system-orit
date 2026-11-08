@@ -1,0 +1,444 @@
+{
+  "app": {
+    "name": "Invitations",
+    "tagline": "Digital event invitations, guest self-registration, tracking and reminders."
+  },
+  "locale": {
+    "label": "Language",
+    "he": "עברית",
+    "en": "English"
+  },
+  "login": {
+    "title": "Staff sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "errors": {
+      "missing_fields": "Enter a valid email and your password.",
+      "invalid_credentials": "Wrong email or password.",
+      "unavailable": "Can't sign in right now. Try again in a moment."
+    }
+  },
+  "noAccess": {
+    "title": "No access",
+    "body": "You're signed in, but your user isn't set up as staff yet. Ask the administrator to add you.",
+    "logout": "Sign out"
+  },
+  "admin": {
+    "logout": "Sign out",
+    "events": "Events",
+    "newEvent": "New event",
+    "edit": "Edit",
+    "upcoming": "Upcoming events",
+    "past": "Past events",
+    "inactive": "Inactive",
+    "empty": "No events yet. Create the first one.",
+    "loadError": "Couldn't load events. Refresh the page.",
+    "guestsSummary": "{guests, plural, =0 {No guests yet} one {1 guest} other {# guests}}"
+  },
+  "templates": {
+    "legend": "Design template",
+    "sampleTitle": "Event",
+    "sampleButton": "RSVP",
+    "names": {
+      "classic": "Classic",
+      "minimal": "Minimal",
+      "floral": "Floral",
+      "midnight": "Modern dark",
+      "gold": "Gold",
+      "kids": "Kids",
+      "corporate": "Clean business",
+      "tech": "Tech business",
+      "festive": "Festive",
+      "romantic": "Romantic"
+    }
+  },
+  "media": {
+    "choose": "Choose an image or GIF",
+    "hint": "JPG, PNG, WebP or GIF, up to 10MB",
+    "uploading": "Uploading...",
+    "replace": "Replace",
+    "remove": "Remove",
+    "previewAlt": "Invitation image",
+    "errors": {
+      "type": "Only JPG, PNG, WebP or GIF files.",
+      "size": "The file is larger than 10MB.",
+      "upload": "Upload failed. Try again."
+    }
+  },
+  "eventForm": {
+    "sections": {
+      "details": "Event details",
+      "location": "Location",
+      "design": "Design",
+      "more": "More settings"
+    },
+    "title": "Event name",
+    "event_type": "Event type",
+    "types": {
+      "private": "Private",
+      "business": "Business"
+    },
+    "date_time": "Date and time",
+    "timeZoneHint": "Israel time",
+    "description": "Description",
+    "venue_name": "Venue name",
+    "address": "Address",
+    "geocode": {
+      "button": "Find on map",
+      "searching": "Searching...",
+      "set": "Map location set",
+      "none": "No map location. Without it the invitation won't show Waze and Google Maps buttons.",
+      "check": "Check on Google Maps",
+      "clear": "Clear",
+      "manualLabel": "Or paste a map link or coordinates",
+      "manualHint": "A Google Maps or Waze link, or coordinates like 32.0755, 34.7755",
+      "not_found": "Address not found. Try rewording it, or paste a map link.",
+      "unavailable": "The map service is unavailable. You can paste a map link instead."
+    },
+    "media": "Invitation image or GIF",
+    "customColor": "Custom color",
+    "gift_link_url": "Gift or payment link",
+    "giftHint": "For example a Bit, PayBox or gift registry link",
+    "rsvp_deadline": "Registration deadline",
+    "max_guests": "Maximum guests",
+    "maxGuestsHint": "Empty = no limit",
+    "slug": "Link ending (optional)",
+    "slugHint": "Lowercase letters, digits and dashes. Left empty, one is generated. Can't be changed later.",
+    "is_active": "Event is active",
+    "isActiveHint": "An inactive event won't accept new registrations.",
+    "create": "Create event",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "errors": {
+      "required": "Required",
+      "too_long": "Too long",
+      "invalid_url": "Invalid link. It should start with https://",
+      "invalid_date": "Invalid date",
+      "invalid_coordinates": "Invalid map location",
+      "invalid_color": "Invalid color",
+      "invalid_number": "Enter a positive whole number",
+      "invalid_slug": "Lowercase letters, digits and dashes only, 3 to 64 characters",
+      "slug_taken": "Another event already uses this link ending",
+      "deadline_after_event": "The registration deadline must be before the event",
+      "save_failed": "Saving failed. Try again.",
+      "not_found": "Event not found. It may have been deleted.",
+      "fix_fields": "Fix the highlighted fields."
+    },
+    "reminder": "Email reminder before the event",
+    "reminderHint": "Sent automatically to guests who left an email.",
+    "reminderOptions": {
+      "none": "No automatic reminder",
+      "days": "{days, plural, one {1 day before} =7 {1 week before} other {# days before}}",
+      "hours": "{hours} hours before"
+    }
+  },
+  "eventPage": {
+    "publicLink": "Invitation link",
+    "publicLinkHint": "Share this link with guests (WhatsApp, SMS, etc.).",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "copyFallback": "Copy the link:",
+    "openPublic": "Open invitation page",
+    "template": "Template",
+    "inactiveNotice": "This event is inactive and not accepting registrations.",
+    "dangerZone": "Delete event",
+    "deleteHint": "Deleting is permanent and removes all registrations for the event.",
+    "delete": "Delete event",
+    "deleting": "Deleting...",
+    "deleteConfirm": "Delete \"{title}\" and all its registrations? This can't be undone.",
+    "details": "Event details",
+    "summary": {
+      "registrations": "Registrations",
+      "guests": "Total guests",
+      "withEmail": "With email",
+      "cancelled": "Cancelled",
+      "capacity": "of {max} seats"
+    },
+    "preview": "Preview",
+    "seating": "Seating"
+  },
+  "invitation": {
+    "invited": {
+      "private": "You're invited",
+      "business": "You're invited"
+    },
+    "rsvpTitle": "RSVP",
+    "date": "Date",
+    "time": "Time",
+    "venue": "Venue",
+    "address": "Address",
+    "countdown": {
+      "label": "Time left until the event",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds",
+      "started": "The event has started"
+    },
+    "actions": {
+      "waze": "Navigate with Waze",
+      "googleMaps": "Navigate with Google Maps",
+      "calendar": "Add to calendar",
+      "googleCalendar": "Add to Google Calendar",
+      "gift": "Gift / payment"
+    },
+    "notFound": {
+      "title": "Invitation not found",
+      "body": "The link may be wrong or the event was removed. Check the link with whoever sent it."
+    }
+  },
+  "registration": {
+    "full_name": "Full name",
+    "phone": "Phone",
+    "phoneHint": "Only used for updates about the event",
+    "email": "Email",
+    "emailHint": "Optional. We'll send a reminder before the event",
+    "guest_count": "How many are coming (including you)",
+    "guest_names": "Guest names",
+    "guestNamesHint": "Optional, but it helps us with seating.",
+    "guestNameN": "Guest {n}",
+    "notes": "Notes",
+    "notesHint": "Dietary needs, allergies, transport, etc.",
+    "submit": "Confirm attendance",
+    "submitting": "Sending...",
+    "deadline": "Registration is open until {date}.",
+    "updateHint": "Already registered? Registering again with the same phone updates it.",
+    "thanks": {
+      "title": "Thank you, {name}!",
+      "created": "{count, plural, one {You're registered.} other {You're registered, # guests.}}",
+      "updated": "{count, plural, one {Your registration was updated.} other {Your registration was updated, # guests.}}",
+      "change": "Change registration"
+    },
+    "closed": {
+      "closed": "Registration for this event is closed.",
+      "deadline_passed": "The registration deadline has passed.",
+      "full": "This event is fully booked."
+    },
+    "errors": {
+      "name_required": "Enter your full name",
+      "too_long": "Too long",
+      "invalid_phone": "Invalid phone number",
+      "invalid_email": "Invalid email address",
+      "invalid_guest_count": "Invalid number of guests",
+      "closed": "Registration for this event is closed.",
+      "deadline_passed": "The registration deadline has passed.",
+      "full": "Not enough seats left.",
+      "full_with_spots": "{count, plural, =0 {The event is fully booked.} one {Only one seat left.} other {Only # seats left.}}",
+      "rate_limited": "Too many attempts. Try again in a few minutes.",
+      "failed": "Something went wrong. Try again."
+    },
+    "previewNote": "Preview: this form doesn't submit."
+  },
+  "registrations": {
+    "title": "Registrations",
+    "add": "Add registration",
+    "export": "Export to Excel",
+    "search": "Search by name, phone, email or notes",
+    "filters": {
+      "status": "Status",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "all": "All",
+      "withEmail": "With email only",
+      "withNotes": "With notes only"
+    },
+    "showing": "Showing {shown} of {total}",
+    "empty": "No registrations yet. Share the link or add one manually.",
+    "noMatches": "No registrations match your search.",
+    "columns": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "guests": "Guests",
+      "notes": "Notes",
+      "registeredAt": "Registered",
+      "actions": "Actions"
+    },
+    "status": {
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    },
+    "source": {
+      "self": "Self-registered",
+      "manual": "Added by staff"
+    },
+    "guestCount": "{count, plural, one {1 guest} other {# guests}}",
+    "actions": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "noEmail": "No email given",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Delete {name}'s registration? This can't be undone.",
+      "sendEmail": "Send reminder",
+      "sendEmailTitle": "Email a reminder to {email}"
+    },
+    "dialog": {
+      "addTitle": "Add registration",
+      "editTitle": "Edit registration",
+      "full_name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "guest_count": "Number of guests",
+      "guest_names": "Guest names",
+      "guestNamesHint": "One name per line",
+      "notes": "Notes",
+      "status": "Status",
+      "capacityNote": "Staff additions aren't limited by the event's capacity.",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "name_required": "Required",
+      "invalid_phone": "Invalid phone number",
+      "invalid_email": "Invalid email address",
+      "invalid_guest_count": "A number from 1 to 50",
+      "too_long": "Too long",
+      "phone_exists": "There's already a registration with this phone. Edit it instead.",
+      "save_failed": "Saving failed. Try again.",
+      "not_found": "Registration not found. It may have been deleted."
+    }
+  },
+  "reminders": {
+    "message": "Hi {name}, a reminder about \"{title}\" on {date} at {time}{hasVenue, select, yes { at {venue}} other {}}. Details: {url}",
+    "emailSubject": "Reminder: {title}"
+  },
+  "export": {
+    "sheetName": "Registrations",
+    "summarySheet": "Summary",
+    "columns": {
+      "full_name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "guest_count": "Guests",
+      "guest_names": "Guest names",
+      "notes": "Notes",
+      "status": "Status",
+      "source": "Source",
+      "created_at": "Registered at",
+      "updated_at": "Updated at",
+      "table": "Table"
+    },
+    "summary": {
+      "event": "Event",
+      "date": "Date",
+      "exportedAt": "Exported at"
+    },
+    "seatingSheet": "Seating",
+    "seating": {
+      "table": "Table",
+      "capacity": "Seats",
+      "seated": "Seated",
+      "guests": "Guests",
+      "unseated": "Not seated"
+    }
+  },
+  "email": {
+    "reminder": {
+      "subject": "Reminder: {title}, {date}",
+      "testPrefix": "[Test] ",
+      "greeting": "Hi {name},",
+      "intro": "This is a reminder about the event you registered for. See you there!",
+      "date": "Date",
+      "time": "Time",
+      "venue": "Venue",
+      "address": "Address",
+      "guests": "Registered for",
+      "guestCount": "{count, plural, one {1 person} other {# people}}",
+      "openInvitation": "Open the invitation",
+      "waze": "Waze",
+      "googleMaps": "Google Maps",
+      "calendar": "Add to calendar",
+      "update": "Need to change something? Register again on the invitation page with the same phone number and your registration will be updated.",
+      "testNotice": "This is a test. This is how the reminder looks to guests."
+    }
+  },
+  "reminderPanel": {
+    "title": "Email reminders",
+    "statusOff": "No automatic reminder for this event. You can set one when editing the event.",
+    "statusScheduled": "An automatic reminder goes out around {date}.",
+    "statusDailyNote": "The automatic check runs once a day in the morning and sends every reminder due in the next 24 hours.",
+    "statusSent": "The reminder was sent on {date}.",
+    "statusPast": "The event has already taken place.",
+    "recipients": "{count, plural, =0 {No guest has left an email yet.} one {1 guest left an email.} other {# guests left an email.}}",
+    "notConfigured": "Email sending isn't set up on the server. See the README, email reminders section.",
+    "dryRun": "Test mode: emails aren't really sent, only logged.",
+    "sendTest": "Send me a test email",
+    "sendAll": "Send reminder to everyone now",
+    "sendAllConfirm": "Send a reminder to {count} guests now? The automatic reminder won't be sent again.",
+    "sending": "Sending...",
+    "result": "{sent, plural, =0 {No emails sent} one {1 email sent} other {# emails sent}}{failed, plural, =0 {} other {, # failed}}.",
+    "errors": {
+      "not_configured": "Email sending isn't set up on the server.",
+      "no_email": "No email address.",
+      "failed": "Sending failed. See the send log."
+    },
+    "log": "Send log",
+    "logEmpty": "No emails sent for this event yet.",
+    "kind": {
+      "reminder_auto": "Automatic",
+      "reminder_manual": "Manual",
+      "test": "Test"
+    },
+    "status": {
+      "sent": "Sent",
+      "failed": "Failed",
+      "dry_run": "Not sent (test mode)"
+    },
+    "sent": "Sent ✓"
+  },
+  "preview": {
+    "banner": "Preview",
+    "back": "Back to event",
+    "inactive": "The event is inactive; guests can't register."
+  },
+  "seating": {
+    "title": "Seating",
+    "back": "← {title}",
+    "hint": "Drag guests onto tables, or pick a table from the list next to each guest. Each registration sits together at one table.",
+    "tablePrefix": "Table",
+    "summary": {
+      "seated": "Guests seated",
+      "unseated": "Not seated yet",
+      "tables": "Tables",
+      "seats": "Total seats"
+    },
+    "add": {
+      "count": "Number of tables",
+      "capacity": "Seats per table",
+      "submit": "Add tables"
+    },
+    "unseated": "Not seated",
+    "guests": "{count, plural, =0 {none} one {1 guest} other {# guests}}",
+    "search": "Search by name",
+    "noGuests": "No confirmed guests yet.",
+    "allSeated": "Everyone is seated.",
+    "noTables": "No tables yet. Add some above.",
+    "noTable": "No table",
+    "moveTo": "Table for {name}",
+    "dropHere": "Drop guests here",
+    "seatsLeft": "{count, plural, =0 {Full} one {1 seat left} other {# seats left}}",
+    "overCapacity": "{count, plural, one {Over by 1} other {Over by #}}",
+    "occupancy": "{seated} of {capacity} seats taken",
+    "edit": {
+      "button": "Edit",
+      "name": "Name",
+      "capacity": "Seats",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "delete": "Delete",
+    "deleteConfirm": "Delete \"{name}\"? Its guests go back to not seated.",
+    "errors": {
+      "invalid": "Invalid value.",
+      "name_taken": "A table with this name already exists.",
+      "failed": "Saving failed and the change was undone. Try again."
+    },
+    "saving": "Saving...",
+    "saved": "All changes saved."
+  }
+}

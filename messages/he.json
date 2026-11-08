@@ -1,0 +1,444 @@
+{
+  "app": {
+    "name": "מערכת הזמנות",
+    "tagline": "דפי הזמנה דיגיטליים לאירועים, הרשמה עצמית של המוזמנים, מעקב ותזכורות."
+  },
+  "locale": {
+    "label": "שפה",
+    "he": "עברית",
+    "en": "English"
+  },
+  "login": {
+    "title": "כניסת עובדים",
+    "email": "אימייל",
+    "password": "סיסמה",
+    "submit": "כניסה",
+    "submitting": "נכנסים...",
+    "errors": {
+      "missing_fields": "יש למלא אימייל תקין וסיסמה.",
+      "invalid_credentials": "האימייל או הסיסמה שגויים.",
+      "unavailable": "אי אפשר להתחבר כרגע. נסו שוב בעוד רגע."
+    }
+  },
+  "noAccess": {
+    "title": "אין הרשאה",
+    "body": "המשתמש שלך מחובר, אבל עדיין לא הוגדר כעובד במערכת. בקשו ממנהל המערכת להוסיף אותך.",
+    "logout": "יציאה"
+  },
+  "admin": {
+    "logout": "יציאה",
+    "events": "אירועים",
+    "newEvent": "אירוע חדש",
+    "edit": "עריכה",
+    "upcoming": "אירועים קרובים",
+    "past": "אירועים שעברו",
+    "inactive": "לא פעיל",
+    "empty": "עוד אין אירועים. צרו את הראשון.",
+    "loadError": "לא הצלחנו לטעון את האירועים. רעננו את הדף.",
+    "guestsSummary": "{guests, plural, =0 {אין עדיין נרשמים} one {מגיע אחד} other {# מגיעים}}"
+  },
+  "templates": {
+    "legend": "תבנית עיצוב",
+    "sampleTitle": "אירוע",
+    "sampleButton": "אישור הגעה",
+    "names": {
+      "classic": "קלאסי",
+      "minimal": "מינימלי",
+      "floral": "פרחוני",
+      "midnight": "מודרני כהה",
+      "gold": "זהב",
+      "kids": "ילדים",
+      "corporate": "עסקי נקי",
+      "tech": "עסקי טכנולוגי",
+      "festive": "חגיגי",
+      "romantic": "רומנטי"
+    }
+  },
+  "media": {
+    "choose": "בחירת תמונה או GIF",
+    "hint": "JPG, PNG, WebP או GIF, עד 10MB",
+    "uploading": "מעלים...",
+    "replace": "החלפה",
+    "remove": "הסרה",
+    "previewAlt": "התמונה של ההזמנה",
+    "errors": {
+      "type": "אפשר להעלות רק JPG, PNG, WebP או GIF.",
+      "size": "הקובץ גדול מ-10MB.",
+      "upload": "ההעלאה נכשלה. נסו שוב."
+    }
+  },
+  "eventForm": {
+    "sections": {
+      "details": "פרטי האירוע",
+      "location": "מיקום",
+      "design": "עיצוב",
+      "more": "הגדרות נוספות"
+    },
+    "title": "שם האירוע",
+    "event_type": "סוג אירוע",
+    "types": {
+      "private": "פרטי",
+      "business": "עסקי"
+    },
+    "date_time": "תאריך ושעה",
+    "timeZoneHint": "לפי שעון ישראל",
+    "description": "תיאור",
+    "venue_name": "שם המקום",
+    "address": "כתובת",
+    "geocode": {
+      "button": "איתור במפה",
+      "searching": "מחפשים...",
+      "set": "המיקום במפה מוגדר",
+      "none": "המיקום במפה לא מוגדר. בלעדיו לא יוצגו כפתורי Waze ו-Google Maps בהזמנה.",
+      "check": "בדיקה ב-Google Maps",
+      "clear": "ניקוי",
+      "manualLabel": "או הדבקת קישור מפה או קואורדינטות",
+      "manualHint": "קישור מ-Google Maps או Waze, או קואורדינטות בפורמט 32.0755, 34.7755",
+      "not_found": "לא מצאנו את הכתובת. נסו לנסח אחרת, או הדביקו קישור מפה.",
+      "unavailable": "שירות המפות לא זמין כרגע. אפשר להדביק קישור מפה."
+    },
+    "media": "תמונה או GIF להזמנה",
+    "customColor": "צבע מותאם אישית",
+    "gift_link_url": "קישור למתנה או תשלום",
+    "giftHint": "למשל קישור ל-Bit, PayBox או רשימת מתנות",
+    "rsvp_deadline": "מועד אחרון להרשמה",
+    "max_guests": "מספר מקומות מקסימלי",
+    "maxGuestsHint": "ריק = ללא הגבלה",
+    "slug": "סיומת הקישור (רשות)",
+    "slugHint": "אותיות באנגלית, ספרות ומקפים. אם ריק, נוצרת סיומת אוטומטית. אי אפשר לשנות אחרי היצירה.",
+    "is_active": "האירוע פעיל",
+    "isActiveHint": "אירוע לא פעיל לא יקבל הרשמות חדשות.",
+    "create": "יצירת אירוע",
+    "save": "שמירה",
+    "saving": "שומרים...",
+    "cancel": "ביטול",
+    "errors": {
+      "required": "שדה חובה",
+      "too_long": "הטקסט ארוך מדי",
+      "invalid_url": "הקישור לא תקין. צריך להתחיל ב-https://",
+      "invalid_date": "תאריך לא תקין",
+      "invalid_coordinates": "המיקום במפה לא תקין",
+      "invalid_color": "צבע לא תקין",
+      "invalid_number": "יש להזין מספר שלם וחיובי",
+      "invalid_slug": "רק אותיות באנגלית, ספרות ומקפים, 3 עד 64 תווים",
+      "slug_taken": "הסיומת הזו כבר בשימוש באירוע אחר",
+      "deadline_after_event": "המועד האחרון להרשמה חייב להיות לפני האירוע",
+      "save_failed": "השמירה נכשלה. נסו שוב.",
+      "not_found": "האירוע לא נמצא. ייתכן שנמחק.",
+      "fix_fields": "יש לתקן את השדות המסומנים."
+    },
+    "reminder": "תזכורת באימייל לפני האירוע",
+    "reminderHint": "נשלחת אוטומטית לנרשמים שהשאירו אימייל.",
+    "reminderOptions": {
+      "none": "בלי תזכורת אוטומטית",
+      "days": "{days, plural, one {יום לפני} =2 {יומיים לפני} =7 {שבוע לפני} other {# ימים לפני}}",
+      "hours": "{hours} שעות לפני"
+    }
+  },
+  "eventPage": {
+    "publicLink": "קישור להזמנה",
+    "publicLinkHint": "זה הקישור שמפיצים לאורחים (וואטסאפ, SMS וכו').",
+    "copyLink": "העתקת קישור",
+    "copied": "הקישור הועתק",
+    "copyFallback": "העתיקו את הקישור:",
+    "openPublic": "פתיחת דף ההזמנה",
+    "template": "תבנית",
+    "inactiveNotice": "האירוע לא פעיל ולא מקבל הרשמות.",
+    "dangerZone": "מחיקת האירוע",
+    "deleteHint": "המחיקה סופית, כולל כל הנרשמים לאירוע.",
+    "delete": "מחיקת האירוע",
+    "deleting": "מוחקים...",
+    "deleteConfirm": "למחוק את \"{title}\" ואת כל הנרשמים אליו? אי אפשר לבטל.",
+    "details": "פרטי האירוע",
+    "summary": {
+      "registrations": "הרשמות",
+      "guests": "סה\"כ מגיעים",
+      "withEmail": "עם אימייל",
+      "cancelled": "בוטלו",
+      "capacity": "מתוך {max} מקומות"
+    },
+    "preview": "תצוגה מקדימה",
+    "seating": "סידור שולחנות"
+  },
+  "invitation": {
+    "invited": {
+      "private": "הוזמנתם",
+      "business": "הזמנה לאירוע"
+    },
+    "rsvpTitle": "אישור הגעה",
+    "date": "תאריך",
+    "time": "שעה",
+    "venue": "מקום",
+    "address": "כתובת",
+    "countdown": {
+      "label": "זמן שנותר עד האירוע",
+      "days": "ימים",
+      "hours": "שעות",
+      "minutes": "דקות",
+      "seconds": "שניות",
+      "started": "האירוע כבר התחיל"
+    },
+    "actions": {
+      "waze": "ניווט ב-Waze",
+      "googleMaps": "ניווט ב-Google Maps",
+      "calendar": "הוספה ליומן",
+      "googleCalendar": "הוספה ל-Google Calendar",
+      "gift": "מתנה / תשלום"
+    },
+    "notFound": {
+      "title": "ההזמנה לא נמצאה",
+      "body": "ייתכן שהקישור שגוי או שהאירוע הוסר. בדקו את הקישור מול מי ששלח אותו."
+    }
+  },
+  "registration": {
+    "full_name": "שם מלא",
+    "phone": "טלפון",
+    "phoneHint": "נשתמש בו רק לעדכונים על האירוע",
+    "email": "אימייל",
+    "emailHint": "רשות. נשלח אליו תזכורת לפני האירוע",
+    "guest_count": "כמה מגיעים (כולל אותך)",
+    "guest_names": "שמות המגיעים",
+    "guestNamesHint": "רשות, אבל עוזר לנו בסידור.",
+    "guestNameN": "מגיע/ה {n}",
+    "notes": "הערות",
+    "notesHint": "כשרות, אלרגיות, צורך בהסעה וכו'",
+    "submit": "אישור הגעה",
+    "submitting": "שולחים...",
+    "deadline": "אפשר להירשם עד {date}.",
+    "updateHint": "נרשמתם כבר? הרשמה חוזרת עם אותו טלפון תעדכן את הקודמת.",
+    "thanks": {
+      "title": "תודה, {name}!",
+      "created": "{count, plural, one {נרשמת לאירוע.} other {נרשמתם לאירוע, # מגיעים.}}",
+      "updated": "{count, plural, one {ההרשמה עודכנה.} other {ההרשמה עודכנה, # מגיעים.}}",
+      "change": "שינוי ההרשמה"
+    },
+    "closed": {
+      "closed": "ההרשמה לאירוע הזה סגורה.",
+      "deadline_passed": "המועד האחרון להרשמה עבר.",
+      "full": "כל המקומות לאירוע תפוסים."
+    },
+    "errors": {
+      "name_required": "נא למלא שם מלא",
+      "too_long": "הטקסט ארוך מדי",
+      "invalid_phone": "מספר טלפון לא תקין",
+      "invalid_email": "כתובת אימייל לא תקינה",
+      "invalid_guest_count": "מספר מגיעים לא תקין",
+      "closed": "ההרשמה לאירוע הזה סגורה.",
+      "deadline_passed": "המועד האחרון להרשמה עבר.",
+      "full": "אין מספיק מקומות פנויים.",
+      "full_with_spots": "{count, plural, =0 {כל המקומות תפוסים.} one {נשאר מקום אחד בלבד.} other {נשארו # מקומות בלבד.}}",
+      "rate_limited": "יותר מדי ניסיונות. נסו שוב בעוד כמה דקות.",
+      "failed": "משהו השתבש. נסו שוב."
+    },
+    "previewNote": "תצוגה מקדימה: הטופס לא שולח הרשמות."
+  },
+  "registrations": {
+    "title": "נרשמים",
+    "add": "הוספת נרשם",
+    "export": "ייצוא ל-Excel",
+    "search": "חיפוש לפי שם, טלפון, אימייל או הערות",
+    "filters": {
+      "status": "סטטוס",
+      "confirmed": "מאושרים",
+      "cancelled": "בוטלו",
+      "all": "הכל",
+      "withEmail": "רק עם אימייל",
+      "withNotes": "רק עם הערות"
+    },
+    "showing": "{shown, plural, one {מוצג נרשם אחד} other {מוצגים # נרשמים}} מתוך {total}",
+    "empty": "עוד אין נרשמים. שתפו את הקישור או הוסיפו נרשם ידנית.",
+    "noMatches": "אין נרשמים שמתאימים לחיפוש.",
+    "columns": {
+      "name": "שם",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guests": "מגיעים",
+      "notes": "הערות",
+      "registeredAt": "נרשם",
+      "actions": "פעולות"
+    },
+    "status": {
+      "confirmed": "מאושר",
+      "cancelled": "בוטל"
+    },
+    "source": {
+      "self": "הרשמה עצמית",
+      "manual": "נוסף ידנית"
+    },
+    "guestCount": "{count, plural, one {מגיע אחד} other {# מגיעים}}",
+    "actions": {
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל",
+      "noEmail": "לא נמסר אימייל",
+      "edit": "עריכה",
+      "delete": "מחיקה",
+      "deleteConfirm": "למחוק את ההרשמה של {name}? אי אפשר לבטל.",
+      "sendEmail": "שליחת תזכורת",
+      "sendEmailTitle": "שליחת מייל תזכורת ל-{email}"
+    },
+    "dialog": {
+      "addTitle": "הוספת נרשם",
+      "editTitle": "עריכת נרשם",
+      "full_name": "שם מלא",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guest_count": "מספר מגיעים",
+      "guest_names": "שמות המגיעים",
+      "guestNamesHint": "שם אחד בכל שורה",
+      "notes": "הערות",
+      "status": "סטטוס",
+      "capacityNote": "הוספה ידנית לא מוגבלת במספר המקומות של האירוע.",
+      "save": "שמירה",
+      "saving": "שומרים...",
+      "cancel": "ביטול"
+    },
+    "errors": {
+      "name_required": "שדה חובה",
+      "invalid_phone": "מספר טלפון לא תקין",
+      "invalid_email": "כתובת אימייל לא תקינה",
+      "invalid_guest_count": "מספר בין 1 ל-50",
+      "too_long": "הטקסט ארוך מדי",
+      "phone_exists": "כבר יש הרשמה עם הטלפון הזה לאירוע. ערכו אותה במקום להוסיף.",
+      "save_failed": "השמירה נכשלה. נסו שוב.",
+      "not_found": "ההרשמה לא נמצאה. ייתכן שנמחקה."
+    }
+  },
+  "reminders": {
+    "message": "שלום {name}, תזכורת לאירוע \"{title}\" ב{date} בשעה {time}{hasVenue, select, yes { ב{venue}} other {}}. כל הפרטים: {url}",
+    "emailSubject": "תזכורת: {title}"
+  },
+  "export": {
+    "sheetName": "נרשמים",
+    "summarySheet": "סיכום",
+    "columns": {
+      "full_name": "שם מלא",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "guest_count": "מספר מגיעים",
+      "guest_names": "שמות המגיעים",
+      "notes": "הערות",
+      "status": "סטטוס",
+      "source": "מקור",
+      "created_at": "תאריך הרשמה",
+      "updated_at": "עודכן",
+      "table": "שולחן"
+    },
+    "summary": {
+      "event": "אירוע",
+      "date": "תאריך",
+      "exportedAt": "יוצא בתאריך"
+    },
+    "seatingSheet": "סידור שולחנות",
+    "seating": {
+      "table": "שולחן",
+      "capacity": "מקומות",
+      "seated": "הושבו",
+      "guests": "נרשמים",
+      "unseated": "לא הושבו"
+    }
+  },
+  "email": {
+    "reminder": {
+      "subject": "תזכורת: {title}, {date}",
+      "testPrefix": "[בדיקה] ",
+      "greeting": "שלום {name},",
+      "intro": "זו תזכורת לאירוע שנרשמת אליו. מחכים לך!",
+      "date": "תאריך",
+      "time": "שעה",
+      "venue": "מקום",
+      "address": "כתובת",
+      "guests": "נרשמת עבור",
+      "guestCount": "{count, plural, one {אדם אחד} other {# אנשים}}",
+      "openInvitation": "לדף ההזמנה",
+      "waze": "Waze",
+      "googleMaps": "Google Maps",
+      "calendar": "הוספה ליומן",
+      "update": "צריך לשנות משהו? היכנסו לדף ההזמנה והירשמו שוב עם אותו מספר טלפון, וההרשמה תתעדכן.",
+      "testNotice": "זהו מייל בדיקה. כך ייראה מייל התזכורת לאורחים."
+    }
+  },
+  "reminderPanel": {
+    "title": "תזכורות באימייל",
+    "statusOff": "אין תזכורת אוטומטית לאירוע הזה. אפשר להגדיר בעריכת האירוע.",
+    "statusScheduled": "תזכורת אוטומטית תישלח בסביבות: {date}.",
+    "statusDailyNote": "הבדיקה האוטומטית רצה פעם ביום בבוקר, ושולחת כל תזכורת שמועדה ב-24 השעות הקרובות.",
+    "statusSent": "התזכורת נשלחה: {date}.",
+    "statusPast": "האירוע כבר התקיים.",
+    "recipients": "{count, plural, =0 {אף נרשם עוד לא השאיר אימייל.} one {נרשם אחד השאיר אימייל.} other {# נרשמים השאירו אימייל.}}",
+    "notConfigured": "שליחת אימייל לא מוגדרת בשרת. ראו README, סעיף תזכורות באימייל.",
+    "dryRun": "מצב בדיקה: המיילים לא נשלחים באמת, רק נרשמים ביומן.",
+    "sendTest": "שליחת מייל בדיקה אליי",
+    "sendAll": "שליחת תזכורת לכולם עכשיו",
+    "sendAllConfirm": "לשלוח עכשיו תזכורת ל-{count} נרשמים? התזכורת האוטומטית לא תישלח שוב.",
+    "sending": "שולחים...",
+    "result": "{sent, plural, =0 {לא נשלח אף מייל} one {נשלח מייל אחד} other {נשלחו # מיילים}}{failed, plural, =0 {} other {, # נכשלו}}.",
+    "errors": {
+      "not_configured": "שליחת אימייל לא מוגדרת בשרת.",
+      "no_email": "אין כתובת אימייל.",
+      "failed": "השליחה נכשלה. פרטים ביומן השליחות."
+    },
+    "log": "יומן שליחות",
+    "logEmpty": "עוד לא נשלחו מיילים לאירוע.",
+    "kind": {
+      "reminder_auto": "אוטומטית",
+      "reminder_manual": "ידנית",
+      "test": "בדיקה"
+    },
+    "status": {
+      "sent": "נשלח",
+      "failed": "נכשל",
+      "dry_run": "לא נשלח (מצב בדיקה)"
+    },
+    "sent": "נשלח ✓"
+  },
+  "preview": {
+    "banner": "תצוגה מקדימה",
+    "back": "חזרה לאירוע",
+    "inactive": "האירוע לא פעיל, ואורחים לא יכולים להירשם."
+  },
+  "seating": {
+    "title": "סידור שולחנות",
+    "back": "→ {title}",
+    "hint": "גררו נרשמים לשולחנות, או בחרו שולחן מהרשימה שליד כל נרשם. כל הרשמה יושבת יחד בשולחן אחד.",
+    "tablePrefix": "שולחן",
+    "summary": {
+      "seated": "מגיעים שהושבו",
+      "unseated": "עוד לא הושבו",
+      "tables": "שולחנות",
+      "seats": "סה\"כ מקומות"
+    },
+    "add": {
+      "count": "מספר שולחנות",
+      "capacity": "מקומות בכל שולחן",
+      "submit": "הוספת שולחנות"
+    },
+    "unseated": "לא הושבו",
+    "guests": "{count, plural, =0 {אין} one {מגיע אחד} other {# מגיעים}}",
+    "search": "חיפוש לפי שם",
+    "noGuests": "אין עדיין נרשמים מאושרים.",
+    "allSeated": "כל הנרשמים הושבו.",
+    "noTables": "אין עדיין שולחנות. הוסיפו שולחנות למעלה.",
+    "noTable": "בלי שולחן",
+    "moveTo": "שולחן עבור {name}",
+    "dropHere": "גררו לכאן נרשמים",
+    "seatsLeft": "{count, plural, =0 {מלא} one {נשאר מקום אחד} other {נשארו # מקומות}}",
+    "overCapacity": "{count, plural, one {חריגה במקום אחד} other {חריגה ב-# מקומות}}",
+    "occupancy": "{seated} מתוך {capacity} מקומות תפוסים",
+    "edit": {
+      "button": "עריכה",
+      "name": "שם",
+      "capacity": "מקומות",
+      "save": "שמירה",
+      "cancel": "ביטול"
+    },
+    "delete": "מחיקה",
+    "deleteConfirm": "למחוק את \"{name}\"? היושבים בו יחזרו לרשימת הלא מושבים.",
+    "errors": {
+      "invalid": "ערך לא תקין.",
+      "name_taken": "כבר יש שולחן בשם הזה.",
+      "failed": "השמירה נכשלה, השינוי בוטל. נסו שוב."
+    },
+    "saving": "שומרים...",
+    "saved": "כל השינויים נשמרו."
+  }
+}
