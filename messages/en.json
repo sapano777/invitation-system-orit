@@ -129,7 +129,7 @@
   },
   "eventPage": {
     "publicLink": "Invitation link",
-    "publicLinkHint": "Share this link with guests (WhatsApp, SMS, etc.). The invitation page itself is built in stage 2.",
+    "publicLinkHint": "Share this link with guests (WhatsApp, SMS, etc.).",
     "copyLink": "Copy link",
     "copied": "Link copied",
     "copyFallback": "Copy the link:",
@@ -142,5 +142,76 @@
     "delete": "Delete event",
     "deleting": "Deleting...",
     "deleteConfirm": "Delete \"{title}\" and all its registrations? This can't be undone."
+  },
+  "invitation": {
+    "invited": {
+      "private": "You're invited",
+      "business": "You're invited"
+    },
+    "rsvpTitle": "RSVP",
+    "date": "Date",
+    "time": "Time",
+    "venue": "Venue",
+    "address": "Address",
+    "countdown": {
+      "label": "Time left until the event",
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds",
+      "started": "The event has started"
+    },
+    "actions": {
+      "waze": "Navigate with Waze",
+      "googleMaps": "Navigate with Google Maps",
+      "calendar": "Add to calendar",
+      "googleCalendar": "Add to Google Calendar",
+      "gift": "Gift / payment"
+    },
+    "notFound": {
+      "title": "Invitation not found",
+      "body": "The link may be wrong or the event was removed. Check the link with whoever sent it."
+    }
+  },
+  "registration": {
+    "full_name": "Full name",
+    "phone": "Phone",
+    "phoneHint": "Only used for updates about the event",
+    "email": "Email",
+    "emailHint": "Optional. We'll send a reminder before the event",
+    "guest_count": "How many are coming (including you)",
+    "guest_names": "Guest names",
+    "guestNamesHint": "Optional, but it helps us with seating.",
+    "guestNameN": "Guest {n}",
+    "notes": "Notes",
+    "notesHint": "Dietary needs, allergies, transport, etc.",
+    "submit": "Confirm attendance",
+    "submitting": "Sending...",
+    "deadline": "Registration is open until {date}.",
+    "updateHint": "Already registered? Registering again with the same phone updates it.",
+    "thanks": {
+      "title": "Thank you, {name}!",
+      "created": "{count, plural, one {You're registered.} other {You're registered, # guests.}}",
+      "updated": "{count, plural, one {Your registration was updated.} other {Your registration was updated, # guests.}}",
+      "change": "Change registration"
+    },
+    "closed": {
+      "closed": "Registration for this event is closed.",
+      "deadline_passed": "The registration deadline has passed.",
+      "full": "This event is fully booked."
+    },
+    "errors": {
+      "name_required": "Enter your full name",
+      "too_long": "Too long",
+      "invalid_phone": "Invalid phone number",
+      "invalid_email": "Invalid email address",
+      "invalid_guest_count": "Invalid number of guests",
+      "closed": "Registration for this event is closed.",
+      "deadline_passed": "The registration deadline has passed.",
+      "full": "Not enough seats left.",
+      "full_with_spots": "{count, plural, =0 {The event is fully booked.} one {Only one seat left.} other {Only # seats left.}}",
+      "rate_limited": "Too many attempts. Try again in a few minutes.",
+      "failed": "Something went wrong. Try again."
+    }
   }
 }

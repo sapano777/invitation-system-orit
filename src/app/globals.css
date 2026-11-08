@@ -7,6 +7,7 @@
   --border: #e7e5e4;
   --surface: #ffffff;
   --accent: #b45309;
+  --on-accent: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,7 +28,9 @@
   --color-border: var(--border);
   --color-surface: var(--surface);
   --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-heebo), system-ui, sans-serif;
+  --font-serif: var(--font-frank-ruhl), Georgia, serif;
 }
 
 body {

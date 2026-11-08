@@ -129,7 +129,7 @@
   },
   "eventPage": {
     "publicLink": "קישור להזמנה",
-    "publicLinkHint": "זה הקישור שמפיצים לאורחים (וואטסאפ, SMS וכו'). דף ההזמנה עצמו ייבנה בשלב 2.",
+    "publicLinkHint": "זה הקישור שמפיצים לאורחים (וואטסאפ, SMS וכו').",
     "copyLink": "העתקת קישור",
     "copied": "הקישור הועתק",
     "copyFallback": "העתיקו את הקישור:",
@@ -142,5 +142,76 @@
     "delete": "מחיקת האירוע",
     "deleting": "מוחקים...",
     "deleteConfirm": "למחוק את \"{title}\" ואת כל הנרשמים אליו? אי אפשר לבטל."
+  },
+  "invitation": {
+    "invited": {
+      "private": "הוזמנתם",
+      "business": "הזמנה לאירוע"
+    },
+    "rsvpTitle": "אישור הגעה",
+    "date": "תאריך",
+    "time": "שעה",
+    "venue": "מקום",
+    "address": "כתובת",
+    "countdown": {
+      "label": "זמן שנותר עד האירוע",
+      "days": "ימים",
+      "hours": "שעות",
+      "minutes": "דקות",
+      "seconds": "שניות",
+      "started": "האירוע כבר התחיל"
+    },
+    "actions": {
+      "waze": "ניווט ב-Waze",
+      "googleMaps": "ניווט ב-Google Maps",
+      "calendar": "הוספה ליומן",
+      "googleCalendar": "הוספה ל-Google Calendar",
+      "gift": "מתנה / תשלום"
+    },
+    "notFound": {
+      "title": "ההזמנה לא נמצאה",
+      "body": "ייתכן שהקישור שגוי או שהאירוע הוסר. בדקו את הקישור מול מי ששלח אותו."
+    }
+  },
+  "registration": {
+    "full_name": "שם מלא",
+    "phone": "טלפון",
+    "phoneHint": "נשתמש בו רק לעדכונים על האירוע",
+    "email": "אימייל",
+    "emailHint": "רשות. נשלח אליו תזכורת לפני האירוע",
+    "guest_count": "כמה מגיעים (כולל אותך)",
+    "guest_names": "שמות המגיעים",
+    "guestNamesHint": "רשות, אבל עוזר לנו בסידור.",
+    "guestNameN": "מגיע/ה {n}",
+    "notes": "הערות",
+    "notesHint": "כשרות, אלרגיות, צורך בהסעה וכו'",
+    "submit": "אישור הגעה",
+    "submitting": "שולחים...",
+    "deadline": "אפשר להירשם עד {date}.",
+    "updateHint": "נרשמתם כבר? הרשמה חוזרת עם אותו טלפון תעדכן את הקודמת.",
+    "thanks": {
+      "title": "תודה, {name}!",
+      "created": "{count, plural, one {נרשמת לאירוע.} other {נרשמתם לאירוע, # מגיעים.}}",
+      "updated": "{count, plural, one {ההרשמה עודכנה.} other {ההרשמה עודכנה, # מגיעים.}}",
+      "change": "שינוי ההרשמה"
+    },
+    "closed": {
+      "closed": "ההרשמה לאירוע הזה סגורה.",
+      "deadline_passed": "המועד האחרון להרשמה עבר.",
+      "full": "כל המקומות לאירוע תפוסים."
+    },
+    "errors": {
+      "name_required": "נא למלא שם מלא",
+      "too_long": "הטקסט ארוך מדי",
+      "invalid_phone": "מספר טלפון לא תקין",
+      "invalid_email": "כתובת אימייל לא תקינה",
+      "invalid_guest_count": "מספר מגיעים לא תקין",
+      "closed": "ההרשמה לאירוע הזה סגורה.",
+      "deadline_passed": "המועד האחרון להרשמה עבר.",
+      "full": "אין מספיק מקומות פנויים.",
+      "full_with_spots": "{count, plural, =0 {כל המקומות תפוסים.} one {נשאר מקום אחד בלבד.} other {נשארו # מקומות בלבד.}}",
+      "rate_limited": "יותר מדי ניסיונות. נסו שוב בעוד כמה דקות.",
+      "failed": "משהו השתבש. נסו שוב."
+    }
   }
 }

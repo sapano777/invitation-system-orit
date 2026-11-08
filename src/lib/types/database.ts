@@ -130,6 +130,44 @@ export type Database = {
         Args: Record<string, never>;
         Returns: boolean;
       };
+      get_public_event: {
+        Args: { p_slug: string };
+        Returns: Array<
+          Pick<
+            Database["public"]["Tables"]["events"]["Row"],
+            | "id"
+            | "slug"
+            | "title"
+            | "event_type"
+            | "description"
+            | "date_time"
+            | "venue_name"
+            | "address"
+            | "lat"
+            | "lng"
+            | "template_id"
+            | "media_url"
+            | "primary_color"
+            | "gift_link_url"
+            | "rsvp_deadline"
+            | "max_guests"
+            | "is_active"
+            | "updated_at"
+          > & { guests_taken: number }
+        >;
+      };
+      register_guest: {
+        Args: {
+          p_slug: string;
+          p_full_name: string;
+          p_phone: string;
+          p_email: string | null;
+          p_guest_count: number;
+          p_guest_names: Json;
+          p_notes: string | null;
+        };
+        Returns: Json;
+      };
     };
     Enums: { [_ in never]: never };
     CompositeTypes: { [_ in never]: never };

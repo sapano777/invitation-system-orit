@@ -73,10 +73,12 @@ select public.add_staff('person@example.com', 'שם לתצוגה');
 src/app/              נתיבים (App Router)
 src/app/admin/        ממשק הניהול: רשימת אירועים, יצירה, עריכה
 src/app/login/        כניסת עובדים
+src/app/e/[slug]/     דף ההזמנה הציבורי, הרשמה, קובץ יומן
 src/components/       קומפוננטות משותפות (טופס אירוע, העלאת מדיה, בחירת תבנית)
 src/lib/auth.ts       בדיקת הרשאת עובד (requireStaff)
 src/lib/events/       ולידציה, יצירת slug, קואורדינטות
-src/templates/        רשימת 10 תבניות ההזמנה
+src/templates/        תבניות ההזמנה: רשימה, פריסות, ורכיבים משותפים (blocks/)
+src/lib/phone.ts      נרמול מספרי טלפון לפורמט בינלאומי
 src/i18n/             הגדרות שפה, קריאת השפה מעוגייה
 src/lib/supabase/     לקוחות Supabase: דפדפן, שרת, admin, proxy
 src/lib/types/        טיפוסי הדאטאבייס
