@@ -157,7 +157,8 @@
       "cancelled": "בוטלו",
       "capacity": "מתוך {max} מקומות"
     },
-    "preview": "תצוגה מקדימה"
+    "preview": "תצוגה מקדימה",
+    "seating": "סידור שולחנות"
   },
   "invitation": {
     "invited": {
@@ -319,12 +320,21 @@
       "status": "סטטוס",
       "source": "מקור",
       "created_at": "תאריך הרשמה",
-      "updated_at": "עודכן"
+      "updated_at": "עודכן",
+      "table": "שולחן"
     },
     "summary": {
       "event": "אירוע",
       "date": "תאריך",
       "exportedAt": "יוצא בתאריך"
+    },
+    "seatingSheet": "סידור שולחנות",
+    "seating": {
+      "table": "שולחן",
+      "capacity": "מקומות",
+      "seated": "הושבו",
+      "guests": "נרשמים",
+      "unseated": "לא הושבו"
     }
   },
   "email": {
@@ -385,5 +395,50 @@
     "banner": "תצוגה מקדימה",
     "back": "חזרה לאירוע",
     "inactive": "האירוע לא פעיל, ואורחים לא יכולים להירשם."
+  },
+  "seating": {
+    "title": "סידור שולחנות",
+    "back": "→ {title}",
+    "hint": "גררו נרשמים לשולחנות, או בחרו שולחן מהרשימה שליד כל נרשם. כל הרשמה יושבת יחד בשולחן אחד.",
+    "tablePrefix": "שולחן",
+    "summary": {
+      "seated": "מגיעים שהושבו",
+      "unseated": "עוד לא הושבו",
+      "tables": "שולחנות",
+      "seats": "סה\"כ מקומות"
+    },
+    "add": {
+      "count": "מספר שולחנות",
+      "capacity": "מקומות בכל שולחן",
+      "submit": "הוספת שולחנות"
+    },
+    "unseated": "לא הושבו",
+    "guests": "{count, plural, =0 {אין} one {מגיע אחד} other {# מגיעים}}",
+    "search": "חיפוש לפי שם",
+    "noGuests": "אין עדיין נרשמים מאושרים.",
+    "allSeated": "כל הנרשמים הושבו.",
+    "noTables": "אין עדיין שולחנות. הוסיפו שולחנות למעלה.",
+    "noTable": "בלי שולחן",
+    "moveTo": "שולחן עבור {name}",
+    "dropHere": "גררו לכאן נרשמים",
+    "seatsLeft": "{count, plural, =0 {מלא} one {נשאר מקום אחד} other {נשארו # מקומות}}",
+    "overCapacity": "{count, plural, one {חריגה במקום אחד} other {חריגה ב-# מקומות}}",
+    "occupancy": "{seated} מתוך {capacity} מקומות תפוסים",
+    "edit": {
+      "button": "עריכה",
+      "name": "שם",
+      "capacity": "מקומות",
+      "save": "שמירה",
+      "cancel": "ביטול"
+    },
+    "delete": "מחיקה",
+    "deleteConfirm": "למחוק את \"{name}\"? היושבים בו יחזרו לרשימת הלא מושבים.",
+    "errors": {
+      "invalid": "ערך לא תקין.",
+      "name_taken": "כבר יש שולחן בשם הזה.",
+      "failed": "השמירה נכשלה, השינוי בוטל. נסו שוב."
+    },
+    "saving": "שומרים...",
+    "saved": "כל השינויים נשמרו."
   }
 }

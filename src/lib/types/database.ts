@@ -155,6 +155,42 @@ export type Database = {
         Update: Partial<Database["public"]["Tables"]["email_log"]["Insert"]>;
         Relationships: [];
       };
+      event_tables: {
+        Row: {
+          id: string;
+          event_id: string;
+          name: string;
+          capacity: number;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          event_id: string;
+          name: string;
+          capacity: number;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["event_tables"]["Insert"]>;
+        Relationships: [];
+      };
+      registration_tables: {
+        Row: {
+          registration_id: string;
+          event_id: string;
+          table_id: string;
+          assigned_at: string;
+        };
+        Insert: {
+          registration_id: string;
+          event_id: string;
+          table_id: string;
+          assigned_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["registration_tables"]["Insert"]>;
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {
@@ -210,3 +246,4 @@ export type Database = {
 export type EventRow = Database["public"]["Tables"]["events"]["Row"];
 export type RegistrationRow = Database["public"]["Tables"]["registrations"]["Row"];
 export type EmailLogRow = Database["public"]["Tables"]["email_log"]["Row"];
+export type EventTableRow = Database["public"]["Tables"]["event_tables"]["Row"];

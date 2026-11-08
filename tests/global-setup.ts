@@ -42,12 +42,25 @@ export default async function globalSetup() {
     { ...base, slug: `${SLUG_PREFIX}full`, title: "בדיקה מלא", template_id: "classic", max_guests: 1 },
     { ...base, slug: `${SLUG_PREFIX}closed`, title: "בדיקה סגור", template_id: "classic", is_active: false },
     { ...base, slug: `${SLUG_PREFIX}admin`, title: "בדיקת ניהול", template_id: "corporate" },
+    // One seating event per Playwright project, since projects run in parallel.
+    ...["desktop", "iphone"].map((project) => ({ ...base, slug: `${SLUG_PREFIX}seating-${project}`, title: "בדיקת שולחנות", template_id: "classic" })),
   ];
   const { data: events, error } = await supabase.from("events").insert(rows).select("id, slug");
   if (error) throw error;
 
   const full = events.find((e) => e.slug === `${SLUG_PREFIX}full`)!;
   await supabase.from("registrations").insert({ event_id: full.id, full_name: "תופס מקום", phone: "972500000001", guest_count: 1 });
+
+  for (const event of events.filter((e) => e.slug.startsWith(`${SLUG_PREFIX}seating-`))) {
+    const { error: seatError } = await supabase.from("registrations").insert([
+      { event_id: event.id, full_name: "משפחת כהן", phone: "972500000011", guest_count: 4, status: "confirmed" },
+      { event_id: event.id, full_name: "משפחת לוי", phone: "972500000012", guest_count: 3, status: "confirmed" },
+      { event_id: event.id, full_name: "זוג מזרחי", phone: "972500000013", guest_count: 2, status: "confirmed" },
+      { event_id: event.id, full_name: "יוסי לבד", phone: "972500000014", guest_count: 1, status: "confirmed" },
+      { event_id: event.id, full_name: "ביטלו", phone: "972500000015", guest_count: 5, status: "cancelled" },
+    ]);
+    if (seatError) throw seatError;
+  }
 
   writeFileSync(STATE_FILE, JSON.stringify({ staffPassword, events: Object.fromEntries(events.map((e) => [e.slug, e.id])) }));
 }

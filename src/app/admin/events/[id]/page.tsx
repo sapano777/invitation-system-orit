@@ -7,7 +7,7 @@ import { RemindersPanel } from "@/components/RemindersPanel";
 import { ButtonLink, buttonClass } from "@/components/ui/Button";
 import { requireStaff } from "@/lib/auth";
 import { emailProvider } from "@/lib/email/transport";
-import { getEmailLog, getEvent, getRegistrations, summarize } from "@/lib/events/queries";
+import { getEmailLog, getEvent, getRegistrations, getSeating, summarize } from "@/lib/events/queries";
 import { reminderDueAt, runIntervalHours } from "@/lib/reminder-schedule";
 import { getSiteUrl, publicEventPath } from "@/lib/site";
 import { isTemplateId } from "@/templates/registry";
@@ -31,13 +31,21 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
   const event = await getEvent(id);
   if (!event) notFound();
 
-  const [t, format, siteUrl, registrations, emailLog] = await Promise.all([
+  const [t, format, siteUrl, registrations, emailLog, seating] = await Promise.all([
     getTranslations(),
     getFormatter(),
     getSiteUrl(),
     getRegistrations(event.id),
     getEmailLog(event.id),
+    getSeating(event.id),
   ]);
+  const tableNames = new Map(seating.tables.map((tb) => [tb.id, tb.name]));
+  // registration id -> table name, for the guest list.
+  const seatedAt: Record<string, string> = {};
+  for (const [registrationId, tableId] of Object.entries(seating.assignments)) {
+    const name = tableNames.get(tableId);
+    if (name) seatedAt[registrationId] = name;
+  }
   const provider = emailProvider();
   const publicUrl = `${siteUrl}${publicEventPath(event.slug)}`;
   const summary = summarize(registrations);
@@ -68,7 +76,10 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
           <h1 dir="auto" className="text-2xl font-bold">{event.title}</h1>
           {!event.is_active && <p className="mt-1 text-sm text-red-600">{t("eventPage.inactiveNotice")}</p>}
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
+          <ButtonLink href={`/admin/events/${event.id}/tables`} variant="secondary">
+            {t("eventPage.seating")}
+          </ButtonLink>
           <ButtonLink href={`/admin/events/${event.id}/preview`} variant="secondary">
             {t("eventPage.preview")}
           </ButtonLink>
@@ -112,6 +123,7 @@ export default async function EventPage({ params }: PageProps<"/admin/events/[id
       <RegistrationsPanel
         eventId={event.id}
         emailEnabled={provider !== null}
+        seatedAt={seatedAt}
         registrations={registrations}
         exportHref={`/admin/events/${event.id}/export`}
         reminder={{

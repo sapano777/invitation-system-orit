@@ -28,6 +28,8 @@ type Props = {
   // When the server can send email, the email button sends the reminder
   // directly; otherwise it opens the staff member's mail app.
   emailEnabled: boolean;
+  // registration id -> table name
+  seatedAt: Record<string, string>;
 };
 
 type StatusFilter = "confirmed" | "cancelled" | "all";
@@ -40,7 +42,7 @@ function haystack(r: RegistrationRow) {
     .toLowerCase();
 }
 
-export function RegistrationsPanel({ eventId, registrations, reminder, exportHref, emailEnabled }: Props) {
+export function RegistrationsPanel({ eventId, registrations, reminder, exportHref, emailEnabled, seatedAt }: Props) {
   const t = useTranslations("registrations");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
@@ -121,6 +123,7 @@ export function RegistrationsPanel({ eventId, registrations, reminder, exportHre
                   registration={r}
                   reminder={reminder}
                   emailEnabled={emailEnabled}
+                  table={seatedAt[r.id] ?? null}
                   onEdit={() => setDialog({ registration: r })}
                 />
               ))}
@@ -139,10 +142,11 @@ type ItemProps = {
   registration: RegistrationRow;
   reminder: ReminderContext;
   emailEnabled: boolean;
+  table: string | null;
   onEdit: () => void;
 };
 
-function RegistrationItem({ eventId, registration: r, reminder, emailEnabled, onEdit }: ItemProps) {
+function RegistrationItem({ eventId, registration: r, reminder, emailEnabled, table, onEdit }: ItemProps) {
   const t = useTranslations();
   const format = useFormatter();
   const [deleting, startDelete] = useTransition();
@@ -173,6 +177,7 @@ function RegistrationItem({ eventId, registration: r, reminder, emailEnabled, on
             {r.status === "cancelled" && (
               <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs text-red-700 dark:bg-red-950 dark:text-red-200">{t("registrations.status.cancelled")}</span>
             )}
+            {table && <span className="rounded-full border border-border px-2 py-0.5 text-xs">{table}</span>}
             {r.source === "manual" && <span className="text-xs text-muted">{t("registrations.source.manual")}</span>}
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">

@@ -1,7 +1,7 @@
 import ExcelJS from "exceljs";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { getAuthState } from "@/lib/auth";
-import { getEvent, getRegistrations, summarize } from "@/lib/events/queries";
+import { getEvent, getRegistrations, getSeating, summarize } from "@/lib/events/queries";
 import { formatPhone } from "@/lib/phone";
 import { guestNamesList } from "@/lib/registration/guest-names";
 
@@ -15,13 +15,16 @@ export async function GET(_request: Request, { params }: RouteContext<"/admin/ev
   const event = await getEvent(id);
   if (!event) return new Response("Not found", { status: 404 });
 
-  const [registrations, t, format, locale] = await Promise.all([
+  const [registrations, seating, t, format, locale] = await Promise.all([
     getRegistrations(event.id),
+    getSeating(event.id),
     getTranslations(),
     getFormatter(),
     getLocale(),
   ]);
   const rtl = locale === "he";
+  const tableName = new Map(seating.tables.map((tb) => [tb.id, tb.name]));
+  const tableOf = (registrationId: string) => tableName.get(seating.assignments[registrationId] ?? "") ?? "";
   const dateTime = (iso: string) => format.dateTime(new Date(iso), { dateStyle: "short", timeStyle: "short" });
 
   const workbook = new ExcelJS.Workbook();
@@ -35,6 +38,7 @@ export async function GET(_request: Request, { params }: RouteContext<"/admin/ev
     { header: t("export.columns.phone"), key: "phone", width: 16 },
     { header: t("export.columns.email"), key: "email", width: 28 },
     { header: t("export.columns.guest_count"), key: "guest_count", width: 12 },
+    { header: t("export.columns.table"), key: "table", width: 14 },
     { header: t("export.columns.guest_names"), key: "guest_names", width: 40 },
     { header: t("export.columns.notes"), key: "notes", width: 36 },
     { header: t("export.columns.status"), key: "status", width: 12 },
@@ -50,6 +54,7 @@ export async function GET(_request: Request, { params }: RouteContext<"/admin/ev
       phone: formatPhone(r.phone),
       email: r.email ?? "",
       guest_count: r.guest_count,
+      table: tableOf(r.id),
       guest_names: guestNamesList(r.guest_names).join(", "),
       notes: r.notes ?? "",
       status: t(`registrations.status.${r.status}`),
@@ -79,6 +84,40 @@ export async function GET(_request: Request, { params }: RouteContext<"/admin/ev
     [t("export.summary.exportedAt"), format.dateTime(new Date(), { dateStyle: "short", timeStyle: "short" })],
   ]);
   summarySheet.getColumn(1).font = { bold: true };
+
+  if (seating.tables.length > 0) {
+    const confirmed = [...registrations].reverse().filter((r) => r.status === "confirmed");
+    const seatingSheet = workbook.addWorksheet(t("export.seatingSheet"), {
+      views: [{ state: "frozen", ySplit: 1, rightToLeft: rtl }],
+    });
+    seatingSheet.columns = [
+      { header: t("export.seating.table"), key: "table", width: 16 },
+      { header: t("export.seating.capacity"), key: "capacity", width: 10 },
+      { header: t("export.seating.seated"), key: "seated", width: 10 },
+      { header: t("export.seating.guests"), key: "guests", width: 70 },
+    ];
+    const describe = (list: typeof confirmed) => list.map((r) => (r.guest_count > 1 ? `${r.full_name} (${r.guest_count})` : r.full_name)).join(", ");
+    for (const table of seating.tables) {
+      const atTable = confirmed.filter((r) => seating.assignments[r.id] === table.id);
+      seatingSheet.addRow({
+        table: table.name,
+        capacity: table.capacity,
+        seated: atTable.reduce((sum, r) => sum + r.guest_count, 0),
+        guests: describe(atTable),
+      });
+    }
+    const unseated = confirmed.filter((r) => !tableName.has(seating.assignments[r.id] ?? ""));
+    if (unseated.length > 0) {
+      seatingSheet.addRow({
+        table: t("export.seating.unseated"),
+        capacity: "",
+        seated: unseated.reduce((sum, r) => sum + r.guest_count, 0),
+        guests: describe(unseated),
+      });
+    }
+    seatingSheet.getRow(1).font = { bold: true };
+    seatingSheet.getColumn("guests").alignment = { wrapText: true, vertical: "top" };
+  }
 
   const buffer = await workbook.xlsx.writeBuffer();
   // ASCII only: with a Hebrew filename* some Chromium builds ignore the name

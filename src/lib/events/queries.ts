@@ -49,3 +49,16 @@ export async function getEmailLog(eventId: string, limit = 50) {
     .limit(limit);
   return data ?? [];
 }
+
+export async function getSeating(eventId: string) {
+  if (!UUID.test(eventId)) return { tables: [], assignments: {} as Record<string, string> };
+  const supabase = await createClient();
+  const [tables, seats] = await Promise.all([
+    supabase.from("event_tables").select("*").eq("event_id", eventId).order("sort_order").order("created_at"),
+    supabase.from("registration_tables").select("registration_id, table_id").eq("event_id", eventId),
+  ]);
+  if (tables.error || seats.error) throw new Error("seating_load_failed");
+  // registration id -> table id
+  const assignments: Record<string, string> = Object.fromEntries(seats.data.map((s) => [s.registration_id, s.table_id]));
+  return { tables: tables.data, assignments };
+}
