@@ -1,0 +1,14 @@
+{
+  "app": {
+    "name": "Invitations",
+    "tagline": "Digital event invitations, guest self-registration, tracking and reminders."
+  },
+  "locale": {
+    "label": "Language",
+    "he": "עברית",
+    "en": "English"
+  },
+  "home": {
+    "status": "Stage 0: the foundation is ready. The admin area comes in stage 1."
+  }
+}

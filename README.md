@@ -1,5 +1,80 @@
 # invitation-system-orit
- מערכת לניהול אירועים
 
-מערכת ליצירת הזמנות דיגיטליות לאירועים ושליחה שלהן.
-האפיון ותכנית העבודה נמצאים ב-[docs/work-plan.md](docs/work-plan.md) (נלקחו מ-[shyoni7/invitation-system-yoni](https://github.com/shyoni7/invitation-system-yoni)).
+מערכת לעסק אחד: יצירת דפי הזמנה דיגיטליים לאירועים, הפצה ידנית של קישור אחד לכל אירוע, הרשמה עצמית של המוזמנים, מעקב ותזכורות.
+האפיון ותכנית העבודה ב-[docs/work-plan.md](docs/work-plan.md) (נלקחו מ-[shyoni7/invitation-system-yoni](https://github.com/shyoni7/invitation-system-yoni)).
+
+## טכנולוגיה
+
+- Next.js 16 (App Router, TypeScript), Tailwind CSS 4
+- Supabase: Postgres, Auth, Storage
+- next-intl: עברית (ברירת מחדל, RTL) ואנגלית. השפה נשמרת בעוגייה ולא בכתובת.
+- Vercel לאירוח
+
+## הרצה מקומית
+
+דרוש Node.js 22.
+
+```bash
+npm install
+```
+
+```bash
+cp .env.example .env.local
+```
+
+ממלאים את משתני Supabase ב-`.env.local` ואז:
+
+```bash
+npm run dev
+```
+
+האתר עולה ב-http://localhost:3000. האתר עולה גם בלי Supabase, אבל בלי גישה לנתונים.
+
+## הקמת Supabase
+
+1. יוצרים פרויקט ב-https://supabase.com/dashboard
+2. מריצים את הקבצים ב-`supabase/migrations/` לפי הסדר, ב-SQL Editor או עם `supabase db push`
+3. מעתיקים מ-Project Settings > API Keys את ה-URL, ה-publishable key וה-secret key ל-`.env.local`
+4. מומלץ: Authentication > Sign In / Providers, לכבות "Allow new users to sign up". עובדים מוסיפים ידנית.
+
+בדיקה שהכל מחובר: http://localhost:3000/api/health צריך להחזיר `"healthy": true`.
+
+## הוספת עובד
+
+1. ב-Supabase Dashboard: Authentication > Users > Add user, עם אימייל וסיסמה ו-Auto Confirm.
+2. ב-SQL Editor:
+
+```sql
+select public.add_staff('person@example.com', 'שם לתצוגה');
+```
+
+משתמש שלא נוסף כך יכול להתחבר, אבל לא רואה שום נתון.
+
+## פריסה ל-Vercel
+
+1. מייבאים את הריפו ב-Vercel (New Project)
+2. מגדירים את שלושת משתני הסביבה מ-`.env.example`
+3. אחרי הפריסה בודקים את `/api/health`
+
+## מבנה הפרויקט
+
+```
+src/app/              נתיבים (App Router)
+src/components/       קומפוננטות משותפות
+src/i18n/             הגדרות שפה, קריאת השפה מעוגייה
+src/lib/supabase/     לקוחות Supabase: דפדפן, שרת, admin, proxy
+src/lib/types/        טיפוסי הדאטאבייס
+src/proxy.ts          רענון ה-session בכל בקשה
+messages/             תרגומים: he.json, en.json
+supabase/migrations/  סכמת הדאטאבייס
+docs/                 אפיון ותכנית עבודה
+```
+
+## פקודות
+
+```bash
+npm run dev     # פיתוח
+npm run build   # בנייה
+npm run start   # הרצת גרסת production
+npm run lint    # ESLint
+```
